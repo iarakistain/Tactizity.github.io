@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>URKOTRONIK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+  
+</head>
+
+<body>
+
+  
+<html lang="en">
+<head>
+  
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .marker {
+            background-image: url('http://www.pool.es/wp-content/uploads/facebook-marcador-de-posicion-para-ubicar-lugares-en-mapas.png');
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        body {
+        / / background: #000
+        }
+
+        #map {
+            width: 100%;
+            height: 1000px;
+            position: relative;
+        }
+
+        .menu-ui {
+            background: #fff;
+            position: absolute;
+            top: 100px;
+            left: 10px;
+            z-index: 1;
+            border-radius: 3px;
+            width: 120px;
+            border: 1px solid rgba(0, 0, 0, 0.4);
+        }
+
+        .menu-ui a {
+            font-size: 13px;
+            color: #404040;
+            display: block;
+            margin: 0;
+            padding: 0;
+            padding: 10px;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        .menu-ui a:first-child {
+            border-radius: 3px 3px 0 0;
+        }
+
+        .menu-ui a:last-child {
+            border: none;
+            border-radius: 0 0 3px 3px;
+        }
+
+        .menu-ui a:hover {
+            background: #f8f8f8;
+            color: #404040;
+            cursor: pointer !important;
+        }
+
+        .menu-ui a.active,
+        .menu-ui a.active:hover {
+            background: #3887BE;
+            color: #FFF;
+        }
+
+        .info {
+            position: absolute;
+            top: 100px;
+            left: 10px;
+        }
+
+        .info div {
+            background: #fff;
+            padding: 10px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+<nav class='menu-ui'>
+    <a href='#' class='active' data-filter='all'>Mostrar todos </a>
+  
+   
+  
+    <a href='#' data-filter='water'>UBICACIÓN  PARA LA NUEVA MÁQUINA</a>
+    <a href='#' data-filter='outdoor'>Urkotronik</a>
+    <a href='#' data-filter='civil'>Ipurúa</a>
+    <a href='https://www.tactizity.com'>Animación Máquina vending</a>
+    <a href='https://www.tactizity.com'> Video máquina</a>
+</nav>
+
+<div id='map'></div>
+
+<!-- Modal to be populated on click -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h2 id="marker_title" class=""></h2>
+                <img id="marker_image" class="" src=""/>
+                <p id="marker_latlng" class=""></p>
+                <address id="marker_address" class=""></address>
+                <p id="marker_content" class=""></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet'/>
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet'/>
+<script>
+    //globals
+    var apiKey = "pk.eyJ1Ijoiam9yZGFuYnJhdW4iLCJhIjoiY2piNDBnZHphMGRqMTMzcXl4dDB4ZWtoYyJ9.GUxwxcO9h7PJCWWuv0HbtA";
+    var mapCenter = [-2.4712748, 43.1852839]
+
+    mapboxgl.accessToken = apiKey;
+
+    var map = new mapboxgl.Map(
+        {
+            style: 'mapbox://styles/mapbox/satellite-streets-v9',
+            center: mapCenter,
+            zoom: 16.5,
+            pitch: 45,
+            bearing: -177.6,
+            hash: true,
+            container: 'map'
+
+        });
+    map.addControl(new mapboxgl.NavigationControl());
+    map.on('load', function () {
+        // Insert the layer beneath any symbol layer.
+        var layers = map.getStyle().layers;
+
+        var labelLayerId;
+        for (var i = 0; i < layers.length; i++) {
+            if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+                labelLayerId = layers[i].id;
+                break;
+            }
+        }
+
+        map.addLayer({
+            'id': '3d-buildings',
+            'source': 'composite',
+            'source-layer': 'building',
+            'filter': ['==', 'extrude', 'true'],
+            'type': 'fill-extrusion',
+            'minzoom': 15,
+            'paint': {
+                'fill-extrusion-color': '#eee',
+
+                // use an 'interpolate' expression to add a smooth transition effect to the
+                // buildings as the user zooms in
+                'fill-extrusion-height': [
+                    "interpolate", ["linear"], ["zoom"],
+                    15, 0,
+                    15.05, ["get", "height"]
+                ],
+                'fill-extrusion-base': [
+                    "interpolate", ["linear"], ["zoom"],
+                    15, 0,
+                    15.05, ["get", "min_height"]
+                ],
+                'fill-extrusion-opacity': .7
+            }
+        }, labelLayerId);
+        geojsonall.features.forEach(function (marker) {
+
+            // create a HTML element for each feature
+            var el = document.createElement('div');
+            el.className = 'marker';
+
+            // make a marker for each feature and add to the map
+            new mapboxgl.Marker(el)
+                .setLngLat(marker.geometry.coordinates)
+                .addTo(map);
+            new mapboxgl.Marker(el)
+                .setLngLat(marker.geometry.coordinates)
+                .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                    .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+                .addTo(map);
+        });
+
+    });
+
+
+    var geojsonall = {
+        type: 'FeatureCollection',
+
+        features: [{
+            type: 'Feature',
+            filter: 'water',
+            geometry: {
+                type: 'Point',
+                coordinates: [-2.470344, 43.185995]
+            },
+            properties: {
+                title: 'Ego-gain',
+                description: 'Emplazamiento propuesto para la máquina de vending'
+            }
+        },
+            {
+                type: 'Feature',
+                filter: 'outdoor',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-2.467479, 43.192861]
+                },
+                properties: {
+                    title: 'URKOTRONIK',
+                    description: 'Aquí estamos'
+                }
+            },
+            {
+                type: 'Feature',
+                filter: 'civil',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-2.476304, 43.18177]
+                },
+                properties: {
+                    title: 'Ipurúa',
+                    description: 'Campo de fútbol de la S.D. Eibar'
+                }
+            },
+            {
+                type: 'Feature',
+                filter: 'wildlife',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-2.9735648, 43.1848839]
+                },
+                properties: {
+                    title: 'Mapbox4',
+                    description: 'San Francisco, California'
+                }
+            }, {
+                type: 'Feature',
+                filter: 'heritage',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-2.4735648, 43.1948839]
+                },
+                properties: {
+                    title: 'Mapbox5',
+                    description: 'San Francisco, California'
+                }
+            }]
+    };
+
+    // Filter click event
+    $('.menu-ui a').on('click', function () {
+        var filter = $(this).data('filter');
+        $('.marker').remove()
+        $('.mapboxgl-popup').remove()
+
+        $(this).addClass('active').siblings().removeClass('active');
+        if (filter == 'all') {
+            geojsonall.features.forEach(function (marker) {
+
+                    // create a HTML element for each feature
+                    var el = document.createElement('div');
+                    el.className = 'marker';
+
+                    // make a marker for each feature and add to the map
+                    new mapboxgl.Marker(el)
+                        .setLngLat(marker.geometry.coordinates)
+                        .addTo(map);
+                new mapboxgl.Marker(el)
+                    .setLngLat(marker.geometry.coordinates)
+                    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                        .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+                    .addTo(map);
+
+
+
+            });
+        }
+        else {
+            geojsonall.features.forEach(function (marker) {
+                if (marker.filter == filter) {
+                    // create a HTML element for each feature
+                    var el = document.createElement('div');
+                    el.className = 'marker';
+
+                    // make a marker for each feature and add to the map
+                    new mapboxgl.Marker(el)
+                        .setLngLat(marker.geometry.coordinates)
+                        .addTo(map);
+                    new mapboxgl.Marker(el)
+                        .setLngLat(marker.geometry.coordinates)
+                        .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                            .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+                        .addTo(map);
+                }
+
+
+            });
+        }
+
+
+        return false;
+    });
+
+
+</script>
+
+  
+ 
+  
+  </body>
+</html>
+  
+  
+
+</body>
+
+</html>
