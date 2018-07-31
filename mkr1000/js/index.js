@@ -78,7 +78,7 @@
 				}
 			},
 			title: {
-				text: 'Sensor Data'
+				text: 'Sensores LoRa Máster Digital manufacturing (Asignatura tecnologías industriales)'
 			},
 			xAxis: {
 				type: 'datetime',
@@ -86,7 +86,7 @@
 			},
 			yAxis: [{
 				title: {
-					text: 'VOLTAGE',
+					text: 'VOLTAJE',
 					style: {
 						color: '#2b908f',
 						font: '13px sans-serif'
@@ -101,7 +101,7 @@
 				}]
 			}, {
 				title: {
-					text: 'CURRENT',
+					text: 'CORRIENTE',
 					style: {
 						color: '#90ee7e',
 						font: '13px sans-serif'
@@ -117,7 +117,7 @@
 				}]
 			}, {
 				title: {
-					text: 'MOISTURE',
+					text: 'RPM',
 					style: {
 						color: '#f45b5b',
 						font: '13px sans-serif'
@@ -134,7 +134,7 @@
 			}],
 			tooltip: {
 				formatter: function() {
-					var unitOfMeasurement = this.series.name === 'VOLTAGE' ? ' V' : ' A';
+					var unitOfMeasurement = this.series.name === 'VOLTAJE' ? ' V' : ' A';
 					return '<b>' + this.series.name + '</b><br/>' +
 						Highcharts.numberFormat(this.y, 1) + unitOfMeasurement;
 				}
@@ -146,7 +146,7 @@
 				enabled: false
 			},
 			series: [{
-				name: 'VOLTAGE',
+				name: 'VOLTAJE',
 				yAxis: 0,
 				style: {
 					color: '#2b908f'
@@ -166,7 +166,7 @@
 					return data;
 				}())
 			}, {
-				name: 'CURRENT',
+				name: 'CORRIENTE',
 				yAxis: 1,
 				data: (function() {
 					// generate an array of random data
@@ -183,7 +183,7 @@
 					return data;
 				}())
 			}, {
-				name: 'Moisture',
+				name: 'RPM',
 				yAxis: 2,
 				data: (function() {
 					// generate an array of random data
