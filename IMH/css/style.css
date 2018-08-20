@@ -433,9 +433,9 @@ body {
 
 .icon-link {
   position: absolute;
-  left: 5px;
+  left: 20px;
   bottom: 5px;
-  width: 32px;
+  width: 128px;
 }
 .icon-link img {
   width: 100%;
@@ -444,4 +444,5 @@ body {
 .icon-link--twitter {
   left: auto;
   right: 5px;
+   width: 50px;
 }
