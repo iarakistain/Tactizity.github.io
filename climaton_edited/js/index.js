@@ -26,18 +26,6 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 setTimeout(function(){$('.pointer').fadeOut('slow');},3400);
 //************************************************************
 
-var greenIcon = L.icon({
-    iconUrl: 'leaf-green.png',
-    shadowUrl: 'leaf-shadow.png',
-
-    iconSize:     [38, 95], // size of the icon
-    shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
-
-
 var now,
   date, time,
   timeRange, dateRange,
@@ -112,7 +100,7 @@ L.marker([43.18446774285371,  -2.4821571996042167]).addTo(map).on('click', onCli
 L.marker([43.18392169669383,  -2.4830970453033956]).addTo(map).on('click', onClick); //Asola Igartza
 L.marker([43.18162324266106,  -2.4857964202926155]).addTo(map).on('click', onClick); //Tiburcio Anitua 21
 L.marker([43.18092852607501,  -2.487841336169936]).addTo(map).on('click', onClick); //Tiburcio Anitua 25
-L.marker([51.5, -0.09], {icon: greenIcon}).addTo(map);
+
 
 // Animated Bus Icon
 var animatedMarker = L.animatedMarker(line.getLatLngs());
