@@ -26,6 +26,7 @@ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 setTimeout(function(){$('.pointer').fadeOut('slow');},3400);
 //************************************************************
 
+
 var now,
   date, time,
   timeRange, dateRange,
@@ -63,20 +64,7 @@ var linePoints = [
 	[43.18162324266106,  -2.4857964202926155], //Tiburcio Anitua 22
 	[43.18092852607501,  -2.487841336169936]// Tiburcio Anitua 25
 ];
-var line = L.polyline(linePoints, {color: 'clear'}).addTo(map);
-
-
-
-// Draw Line
-var linePoints2 = [
-	
-	[43.185311833228354,  -2.4657429968737574], //
-	[43.18578746173725,  -2.4640220913140354],
-	
-];
-var line2 = L.polyline(linePoints2, {color: 'green'}).addTo(map);
-
-
+var line = L.polyline(linePoints, {color: 'green'}).addTo(map);
 
 // Marker click handler
 function onClick(e) {
@@ -101,11 +89,9 @@ L.marker([43.18392169669383,  -2.4830970453033956]).addTo(map).on('click', onCli
 L.marker([43.18162324266106,  -2.4857964202926155]).addTo(map).on('click', onClick); //Tiburcio Anitua 21
 L.marker([43.18092852607501,  -2.487841336169936]).addTo(map).on('click', onClick); //Tiburcio Anitua 25
 
-
 // Animated Bus Icon
 var animatedMarker = L.animatedMarker(line.getLatLngs());
 map.addLayer(animatedMarker);
-
 
 // Date change handler
 function changeDate() {
