@@ -64,7 +64,7 @@ var linePoints = [
 	[43.18162324266106,  -2.4857964202926155], //Tiburcio Anitua 22
 	[43.18092852607501,  -2.487841336169936]// Tiburcio Anitua 25
 ];
-var line = L.polyline(linePoints, {color: 'green'}).addTo(map);
+var line = L.polyline(linePoints, {color: 'clear'}).addTo(map);
 
 // Marker click handler
 function onClick(e) {
