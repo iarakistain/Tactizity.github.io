@@ -85,7 +85,7 @@ var line = L.polyline(linePoints, {color: 'clear'}).addTo(map);
 
 var popup1 = L.popup()
     .setLatLng([43.18664174394979, -2.463322740667394])
-    .setContent("<b>Recarga corta autobus en parada</b><br>Y alquiler bicicletas eléctricas")
+    .setContent("<b>Recarga pantógrafo autobus 5-8 min</b><br>Y alquiler bicicletas eléctricas")
     .openOn(map);
 	
 	
