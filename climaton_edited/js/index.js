@@ -171,22 +171,6 @@ L.marker([43.18092852607501,  -2.487841336169936]).addTo(map).on('click', onClic
 var animatedMarker = L.animatedMarker(line.getLatLngs());
 map.addLayer(animatedMarker);
 
-var recarga = L.marker([43.189805874383666,  -2.4550997649938893]);
-map.addLayer(recarga);
-
-
-
-
-
-
-var polygon = L.polygon([
-    [43.18092852607501, -2.487841336169936],
-    [51.503, -0.06],
-    [51.51, -0.047]
-]).addTo(mymap);
-
-
-
 
 // Date change handler
 function changeDate() {
