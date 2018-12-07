@@ -1,12 +1,10 @@
 body(onload="initialize()")
-  h3 Drag or re-shape for coordinates to display below (
-    a(href="https://github.com/jeremy-hawes/google-maps-coordinates-polygon-tool") Github
-    | )
-  h3
-    a(href="https://codepen.io/jhawes/blog/creating-a-real-estate-polygon-tool") See blog post
+ 
   #map-canvas
   .lngLat
     span.one Lat
     span.two ,Lng
 button#clipboard-btn(onclick="copyToClipboard(document.getElementById('info').innerHTML)") Copy to Clipboard
 textarea#info
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDz21nCFSgov3CX1oN2pdUP8Zg5VvIsh7o&callback=initMap" type="text/javascript"> </script>

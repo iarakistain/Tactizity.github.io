@@ -1,19 +1,23 @@
 //var myPolygon;
 function initialize() {
   // Map Center
-  var myLatLng = new google.maps.LatLng(33.5190755, -111.9253654);
+  var myLatLng = new google.maps.LatLng(38.575764, -121.478851);
   // General Options
   var mapOptions = {
-    zoom: 12,
+    zoom: 13,
     center: myLatLng,
-    mapTypeId: google.maps.MapTypeId.RoadMap
+    mapTypeId: 'satellite'
+
+    //google.maps.MapTypeId.RoadMap
   };
+  
+
   var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
   // Polygon Coordinates
   var triangleCoords = [
-    new google.maps.LatLng(33.5362475, -111.9267386),
-    new google.maps.LatLng(33.5104882, -111.9627875),
-    new google.maps.LatLng(33.5004686, -111.9027061)
+    new google.maps.LatLng(38.5762475, -121.4267386),
+    new google.maps.LatLng(38.5704882, -121.4627875),
+    new google.maps.LatLng(38.5704686, -121.4027061)
   ];
   // Styling & Controls
   myPolygon = new google.maps.Polygon({
@@ -39,12 +43,13 @@ function getPolygonCoords() {
   var len = myPolygon.getPath().getLength();
   var htmlStr = "";
   for (var i = 0; i < len; i++) {
-    htmlStr += "new google.maps.LatLng(" + myPolygon.getPath().getAt(i).toUrlValue(5) + "), ";
+    //htmlStr += "new google.maps.LatLng(" + myPolygon.getPath().getAt(i).toUrlValue(5) + "), ";
     //Use this one instead if you want to get rid of the wrap > new google.maps.LatLng(),
-    //htmlStr += "" + myPolygon.getPath().getAt(i).toUrlValue(5);
+    htmlStr += "" + myPolygon.getPath().getAt(i).toUrlValue(5);
   }
   document.getElementById('info').innerHTML = htmlStr;
 }
 function copyToClipboard(text) {
   window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
+
 }
