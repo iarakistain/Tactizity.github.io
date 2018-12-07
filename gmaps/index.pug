@@ -1,0 +1,8 @@
+body(onload="initialize()")
+ 
+  #map-canvas
+  .lngLat
+    span.one Lat
+    span.two ,Lng
+button#clipboard-btn(onclick="copyToClipboard(document.getElementById('info').innerHTML)") Copy to Clipboard
+textarea#info
