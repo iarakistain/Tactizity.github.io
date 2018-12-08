@@ -39,6 +39,8 @@
             border-radius: 50%;
             cursor: pointer;
         }
+      
+    
 
         body {
           
@@ -171,7 +173,11 @@
 <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet'/>
 <script src='https://api.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet'/>
-<script>
+
+                                                                           <script>
+      
+                                                                           
+                                                                           
     //globals
     var apiKey = "pk.eyJ1IjoiaWFyYWtpc3RhaW4iLCJhIjoiY2podnY0cWs5MTAyaTNrbnY3MnR5OHJ0bSJ9.aOqeUPZkBISqt1UKpmmX7g";
     var mapCenter = [ -121.49439960000001,38.58157189999999]
@@ -182,18 +188,26 @@
         {
             style: 'mapbox://styles/iarakistain/cjiufr4vd40h52sqsse943rqh',
             center: mapCenter,
-            zoom: 16.5,
+            zoom: 12,
             pitch: 45,
             bearing: -177.6,
             hash: true,
             container: 'map'
 
         });
+                                                                                                                 
+                                                                                                           
+                                                                                                                 
     map.addControl(new mapboxgl.NavigationControl());
     map.on('load', function () {
         // Insert the layer beneath any symbol layer.
         var layers = map.getStyle().layers;
 
+                                                                                                                 
+                                                                                                       
+                                                                                                                 
+                                                                                                                 
+                                                                                                                 
         var labelLayerId;
         for (var i = 0; i < layers.length; i++) {
             if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
@@ -201,6 +215,8 @@
                 break;
             }
         }
+                                                                                                                 
+                                                                                                                
 
         map.addLayer({
             'id': '3d-buildings',
@@ -471,13 +487,9 @@
 
         return false;
     });
-
-
+                                        
 </script>
-
-
- 
-  
+                                           
   </body>
 </html>
   
