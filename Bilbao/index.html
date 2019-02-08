@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='utf-8' />
-<title>Polígono</title>
+<title>World Football Summit 2019</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js"></script>
 <link rel="stylesheet" type="text/css" href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css">
@@ -47,7 +47,7 @@
 }
 
 #map {
-    height:550px;
+    height:520px;
     width:100%;
     position: absolute;
     top:0;
@@ -204,7 +204,7 @@
     <div id="mapWrap">
         <div id="mapHead">
             <h2>Football<span style="color:#ed6319">Industry</span>2019</h2>
-            <p>Inpacto de la Eurocopa 2020 en Bilbao.</p>
+            <p>TACTIZITY analiza el impacto de la Eurocopa 2020.</p>
             <div id='mapBtnHolder'>
                 <div class='mapBtn' id="queensPark" datalng="-2.94236456386" datalat="43.2581023009">San Mames<br>Estadio</div>  
                 <div class='mapBtn' id="highPark" datalng="-2.914343232621917" datalat="43.25855717660707">Casco<br>Viejo</div>
@@ -242,7 +242,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGlhbWJlbmRhdmlzIiwiYSI6IlVrb3BGVzQifQ.je
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/satellite-streets-v9',
-    center: [-2.94236456386, 43.2581023009],
+    center: [-2.94836156386, 43.2621023009],
     zoom: 16.2,
     pitch:50,
     bearing:-25
@@ -325,7 +325,7 @@ var threeJSModel = {
     type: 'custom',
     onAdd: function(map, gl) {
 
-        getTranslate(-2.94236456386, 43.2581023009);  
+        getTranslate(-2.94836156386, 43.2621023009);  
 
         this.camera = new THREE.Camera();
         this.scene = new THREE.Scene();
@@ -383,7 +383,7 @@ map.on('style.load', function() {
 
 </script>
 
- <iframe src="https://public.tableau.com/views/TipologaestablecimientosBilbao_/Dashboard1?:embed=y&:display_count=yes&publish=yes?:showVizHome=no" width="1400" height="330" style= "position:relative; bottom: 100px; left: 200px;  name="iframe_a"></iframe>  
+ <iframe src="https://public.tableau.com/views/TipologaestablecimientosBilbao_/Dashboard1?:embed=y&:display_count=yes&publish=yes?:showVizHome=no" width="1400" height="330"  style= "position:relative; bottom: 130px; left: 50px;  name="iframe_a"></iframe>  
 
 <p><a href="https://www.tactizity.com" target="iframe_a">www.tactizity.com</a></p> 
 </body>
