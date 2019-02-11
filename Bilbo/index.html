@@ -237,11 +237,14 @@ document.getElementById("trinityPark").addEventListener("click", moveSkydome);
 document.getElementById("olympicStadium").addEventListener("click", moveSkydome);
 document.getElementById("panBuild").addEventListener("click", panSkydome);
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGlhbWJlbmRhdmlzIiwiYSI6IlVrb3BGVzQifQ.jeHxDCnpXXvAXKfAFEYG-A';
+//mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGlhbWJlbmRhdmlzIiwiYSI6IlVrb3BGVzQifQ.jeHxDCnpXXvAXKfAFEYG-A';
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiaWFyYWtpc3RhaW4iLCJhIjoiY2podnY0cWs5MTAyaTNrbnY3MnR5OHJ0bSJ9.aOqeUPZkBISqt1UKpmmX7g';
 
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/satellite-streets-v9',
+	style: 'mapbox://styles/iarakistain/cjs0dum8a07211fs4k9swzhua',
+    //style: 'mapbox://styles/mapbox/satellite-streets-v9',
     center: [-2.94836156386, 43.2621023009],
     zoom: 16.2,
     pitch:50,
