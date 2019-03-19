@@ -68,7 +68,7 @@
     -ms-transition: opacity 1s ease-in-out;
     -o-transition: opacity 1s ease-in-out;
 }
-.
+
 #mapLoader {
       position: absolute;
       left: 48%;
@@ -204,7 +204,7 @@
     <div id="mapWrap">
         <div id="mapHead">
             <h2>Impacto<span style="color:#ed6319">Athletic</span>2019</h2>
-            <p>TACTIZITY analiza el impacto del Athletic en los negocios de Bilbao.</p>
+            <p>TACTIZITY analiza el impacto del fútbol en Bilbao.</p>
             <div id='mapBtnHolder'>
                 <div class='mapBtn' id="queensPark" datalng="-2.94836156386" datalat="43.2621023009">San <br>Mamés</div>  
                 <div class='mapBtn' id="highPark" datalng="-2.9395867692389572" datalat="43.26172234414821">Zona<br>Indautxu</div>
@@ -245,8 +245,8 @@ var map = new mapboxgl.Map({
     container: 'map',
 	style: 'mapbox://styles/iarakistain/cjs0dum8a07211fs4k9swzhua',
     //style: 'mapbox://styles/mapbox/satellite-streets-v9',
-    center: [-2.949361, 43.264284],
-    zoom: 15.8,
+    center: [-2.94836156386, 43.2621023009],
+    zoom: 16.5,
     pitch:50,
     bearing:-25
 });
@@ -299,8 +299,8 @@ var fromLL = function (lon,lat) {
 
 
 function getMouseCoord(e) {
-    var pointlat = e.lngLat.lat;
-    var pointlng = e.lngLat.lng;
+    var pointlat = e.lngLat.lat - 0.002;
+    var pointlng = e.lngLat.lng + 0.001;
     getTranslate(pointlng, pointlat);
 }
 
@@ -310,11 +310,11 @@ function getTranslate(lng, lat) {
     transform = {
         translateX: translate[0],
         translateY: translate[1],
-        translateZ:0,
-        rotateX: Math.PI /2,
-        rotateY: 1,
-        rotateZ: 0,
-        scale: 0.00000000700
+        translateZ: 0.00000075,
+        rotateX: Math.PI / 1,
+        rotateY: 3.1,
+        rotateZ: 3.15,
+        scale: 0.00000000084
     }
 } 
 
@@ -324,12 +324,11 @@ var THREE = window.THREE;
 // Create the Mapbox Custom Layer object
 // See 
 var threeJSModel = {
-    id: '3d-model',
+    id: 'custom_layer',
     type: 'custom',
-
     onAdd: function(map, gl) {
 
-       getTranslate(-2.949361, 43.264284);  
+        getTranslate(-2.94836156386, 43.2621023009);  
 
         this.camera = new THREE.Camera();
         this.scene = new THREE.Scene();
@@ -344,7 +343,7 @@ var threeJSModel = {
 
         var loader = new THREE.GLTFLoader();
         //loader.load('skydome.gltf', (function (gltf) {
-		loader.load('stadium.glb', (function (gltf) {
+		loader.load('skydome.glb', (function (gltf) {
             this.scene.add(gltf.scene);
         }).bind(this));
         this.map = map;
@@ -377,18 +376,6 @@ var threeJSModel = {
 }
 
 map.on('style.load', function() {
-/*       map.addLayer({
-        'id': 'new-stadium',
-        'source': 'composite',
-        'source-layer': 'new-stadium',
-        'filter': ['==', 'extrude', 'true'],
-        'type': 'fill-extrusion',
-        'minzoom': 15,
-        'paint': {
-            'fill-extrusion-color': '#ccc',
-            'fill-extrusion-height': ["get", "height"]
-        }
-    });*/
     map.addLayer(threeJSModel);
 
     document.getElementById('mapLoad').style.opacity = 0;
@@ -398,6 +385,8 @@ map.on('style.load', function() {
 });
 
 </script>
+
+
 
 
 </body>
