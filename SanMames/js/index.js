@@ -10,7 +10,7 @@ zingchart.render({
     type: 'line',
     backgroundColor: "#FFC107",
     title: {
-      text: "Average Interact",
+      text: "Media interacciones",
       textAlign: "left",
       fontColor: "white"
     },
@@ -64,14 +64,14 @@ zingchart.render({
     type: "pie",
     backgroundColor: "#f24c4c",
     title: {
-      text: "Utilization",
+      text: "Utilización",
       textAlign: "left",
       marginLeft: "10px",
       adjustLayout: true,
       fontColor: "white"
     },
     subtitle: {
-      text: "Amount of current usage",
+      text: "Uso actual",
       textAlign: "left",
       marginLeft: "10px",
       fontColor: "white"
@@ -143,14 +143,14 @@ zingchart.render({
     stackType: "100%",
     backgroundColor: "#4CAF50",
     title: {
-      text: "Load distribution",
+      text: "Distribución de cargas",
       textAlign: "left",
       marginLeft: "10px",
       adjustLayout: true,
       fontColor: "#ffffff"
     },
     subtitle: {
-      text: "Utilization across nodes",
+      text: "Utilización de nodos",
       textAlign: "left",
       marginLeft: "10px",
       fontColor: "#ffffff"
@@ -219,7 +219,7 @@ zingchart.render({
     type: "bar",
     stacked: true,
     title: {
-      text: "Status Count",
+      text: "Estados",
       textAlign: "left",
       fontColor: "#fff"
     },
@@ -330,7 +330,7 @@ zingchart.render({
     type: 'line',
     backgroundColor: "#0277BD",
     title: {
-      text: "Communication",
+      text: "Communicaciones",
       textAlign: "left",
       fontColor: "white"
     },
@@ -381,7 +381,7 @@ zingchart.render({
       visible: false
     },
     labels: [{
-      text: "33kw",
+      text: "",
       x: "5%",
       y: "2%",
       fontSize: "50px",
@@ -479,7 +479,7 @@ zingchart.render({
       margin: 'dynamic'
     },
     title: {
-      text: "Distribution",
+      text: "Distribución",
       textAlign: "left",
       fontColor: "white",
       adjustLayout: true
