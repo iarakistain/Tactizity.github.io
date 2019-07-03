@@ -1,0 +1,108 @@
+<html>
+<head>
+<meta charset=utf-8 />
+<title>A simple map</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css' rel='stylesheet'>
+
+<style>
+  #map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+  }
+
+  .leaflet-bar-mdl.leaflet-control {
+    margin: 8px 16px 8px 16px;
+  }
+  .leaflet-bar-mdl.leaflet-control button {
+    margin-bottom: 16px;
+    display: block;
+  }
+  @media (min-width: 840px) {
+    .leaflet-bar-mdl.leaflet-control {
+      margin: 24px 24px 0 24px;
+    }
+  }
+
+</style>
+</head>
+<body>
+<div id='map'></div>
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js'></script>
+<!-- <script src="/Users/Chris/Documents/Projects/aeroster/dist/js/leaflet-material-min.js"></script> -->
+<script>
+  L.Control.Attribution.prototype.options.position = "bottomleft";
+  
+  L.mapbox.accessToken = 'pk.eyJ1IjoiY3RpcHBldHQiLCJhIjoiS3lpTnN4MCJ9.YG_uH8r7IgwgcSWEPYROMA';
+  var map = L.mapbox.map('map', null ,{zoomControl: false, attributionControl: true})
+      .setView([12.1135221, -68.9495816], 12);
+
+  var layers = {
+       
+     Streets: L.mapbox.tileLayer('mapbox.streets'),
+     Outdoors: L.mapbox.tileLayer('mapbox.outdoors'),
+    Satellite: L.mapbox.tileLayer('mapbox.satellite'),
+   
+  };
+  
+  layers.Streets.addTo(map);
+  
+  
+  var greenIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+//L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map);
+  
+var marker = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map);
+marker.url = 'https://www.google.com'
+
+marker.on('click', function(){
+window.location = (this.url);
+});
+ 
+ var yellowIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+var marker = L.marker([12.103174395234902, -68.92685411171578], {icon: yellowIcon}).addTo(map);
+marker.url = 'http://www.tecnalia.com'
+
+marker.on('click', function(){
+window.location = (this.url);
+});
+L.marker([12.0866391, -68.8997912]).addTo(map); 
+var popup = L.popup();
+
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+}
+
+mymap.on('click', onMapClick);
+
+mymap.on('click', onMapClick);
+</script>
+</body>
+</html>
