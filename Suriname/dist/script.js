@@ -360,14 +360,14 @@ var materialOptions = {
   color: 'primary'
 }
 // Material zoom control:
-  var materialZoomControl = new L.Control.MaterialZoom({position: 'bottomright' }).addTo(map);
+  //var materialZoomControl = new L.Control.MaterialZoom({position: 'bottomright' }).addTo(map);
 
   // Material fullscreen control:
  
 
   // Material layer control:
   
-
+var materialLayerControl = new L.Control.MaterialLayers(layers, null, {position: 'bottomright', materialOptions: materialOptions}).addTo(map);
 // Search location (geocode) control
 //var materialGeocodeControl =  new L.Control.MaterialGeocoderControl('mapbox.places', {position: 'topleft', autoComplete: true}).addTo(map);
 
