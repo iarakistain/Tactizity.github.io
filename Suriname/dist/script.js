@@ -357,7 +357,7 @@ var materialOptions = {
   miniFab: true,
   rippleEffect: true,
   toolTips: false,
-  color: 'primary'
+  color: 'orange-A100'
 }
 // Material zoom control:
   //var materialZoomControl = new L.Control.MaterialZoom({position: 'bottomright' }).addTo(map);
