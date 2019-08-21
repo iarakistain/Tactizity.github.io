@@ -1,13 +1,13 @@
 button {
   position: fixed;
   top: 2%;
-  right: 40%;
-  border: solid 1px #333;
-  background-color: #fcc978;
- color: white; border-radius: 3px;
-  font-size: 1em;
+  right: 5%;
+  border: solid 0px #333;
+  background-color: #ffffff;
+ color: black; border-radius: 0px;
+  font-size: 2em;
   transform: translateX(-50%) translateY(-50%);
-  padding: 10px 45px;
+  padding: 5px 5px;
 }
 button:hover {
   box-shadow: 0 0 0 1px rgba(0,0,0,0.7);
