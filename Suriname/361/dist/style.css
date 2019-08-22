@@ -1,14 +1,14 @@
 .button{
-  font: normal 22px/22px "Open Sans Condensed", sans-serif;
+  margin-bottom: 25px; font: normal 30px/30px "Microsoft Yi Baiti", sans-serif;
  display: block; text-align: center; letter-spacing: 1px; transition: all 0.3s ease-out; position: fixed;
-  top: 2%;
+  top: 8%;
   right: 5%;
   border: solid 0px #333;
   background: rgba(255, 255, 255, 0.3);
  color: black; border-radius: 0px;
   font-size: 2em;
  font-stretch: ultra-expanded; transform: translateX(-50%) translateY(-50%);
-  padding: 5px 5px;
+  padding: 5px 10px;
 } .
 button:hover{
   rgba(255, 255, 255, 0.8);   transition: all 0.5s ease-in;
@@ -17,7 +17,7 @@ button:hover{
 body {
   height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 10;
 }
 iframe {
   width: 100%;
