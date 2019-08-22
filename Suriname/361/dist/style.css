@@ -1,18 +1,19 @@
-button {
-  position: fixed;
+.button{
+  font: normal 22px/22px "Open Sans Condensed", sans-serif;
+ display: block; text-align: center; letter-spacing: 1px; transition: all 0.3s ease-out; position: fixed;
   top: 2%;
   right: 5%;
   border: solid 0px #333;
-  background-color: #ffffff;
+  background: rgba(255, 255, 255, 0.3);
  color: black; border-radius: 0px;
   font-size: 2em;
-  transform: translateX(-50%) translateY(-50%);
+ font-stretch: ultra-expanded; transform: translateX(-50%) translateY(-50%);
   padding: 5px 5px;
+} .
+button:hover{
+  rgba(255, 255, 255, 0.8);   transition: all 0.5s ease-in;
 }
-button:hover {
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.7);
-}
-html,
+ html,
 body {
   height: 100%;
   margin: 0;
