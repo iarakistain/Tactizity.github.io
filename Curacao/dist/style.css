@@ -1,3 +1,4 @@
+
 .mdl-menu--bottom-right {
   margin-top: -40px !important;
   margin-left: -50px !important;
@@ -21,13 +22,26 @@
   margin-right: 50px !important;
 }
   /* MATERIAL GEOCODER CONTROL */
+
+
+.leaflet-control-layers-toggle {
+    background-image: url(images/layers.png);
+    width: 36px;
+    height: 36px;
+}
+
+
+
   form.geocoder-form div.mdl-textfield, .leaflet-control-geocoder-results-mdl {
     background-color: white;
     padding: 10px;
     padding-left: 12px;
     overflow: hidden;
-    width: 300px;
+    width: 150px;
   }
+
+
+
   .leaflet-control-geocoder-results-mdl {
     padding: 5px 0 5px 0;
     opacity: 0;
@@ -82,3 +96,4 @@
   .searching form.geocoder-form .mdl-progress {
     visibility: visible;
   }
+

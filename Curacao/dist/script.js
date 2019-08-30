@@ -4,9 +4,9 @@ L.Control.include({
   defaultMaterialOptions: {
     fab: true,
     miniFab: true,
-    rippleEffect: true,
+    rippleEffect: false,
     toolTips: false,
-    color: 'lime-A200'  
+    color: "white"  
   },
   _setDefaultOptions: function () {
     var materialOptions = {};
@@ -161,9 +161,9 @@ L.Control.MaterialZoom = L.Control.Zoom.extend({
 L.Control.MaterialLayers = L.Control.Layers.extend({
   options: {
       collapsed: true,
-      position: 'topright',
+      position: 'bottomright',
       autoZIndex: true,
-      hideSingleBase: false
+      hideSingleBase: true
   },
 
   _initLayout: function () {
@@ -357,16 +357,28 @@ var materialOptions = {
   miniFab: true,
   rippleEffect: true,
   toolTips: false,
-  color: 'primary'
+  color: 'orange-A100'
+  
 }
 // Material zoom control:
-  var materialZoomControl = new L.Control.MaterialZoom({position: 'topright' }).addTo(map);
+ // var materialZoomControl = new L.Control.MaterialZoom({position: 'bottomright' }).addTo(map);
 
   // Material fullscreen control:
-  var materialFullscreen = new L.Control.MaterialFullscreen({position: 'topright' }).addTo(map);
+ 
 
   // Material layer control:
-  var materialLayerControl = new L.Control.MaterialLayers(layers, null, {position: 'bottomright', materialOptions: materialOptions}).addTo(map);
+  
+var materialLayerControl = new L.Control.MaterialLayers(layers, null, {position: 'bottomright',   materialOptions: materialOptions}).addTo(map);
 
 // Search location (geocode) control
-var materialGeocodeControl =  new L.Control.MaterialGeocoderControl('mapbox.places', {position: 'topleft', autoComplete: true}).addTo(map);
+var materialGeocodeControl =  new L.Control.MaterialGeocoderControl('mapbox.places', {position: 'topright', autoComplete: true}).addTo(map);
+
+
+function myFunction() {
+  var x = document.getElementById("fix");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
