@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Curacao</title>
+  <link rel="stylesheet" href="./style.css">
+
+<body>
+<html>
+<meta charset=utf-8 />
+<title>Showme Caribean Curacao map</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">   
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet'>
+
+
+<!-- STYLING -->
+
+ <style>
+hr { 
+  display: block;
+  margin-top: 0.2em;
+  margin-bottom: 0.9em;
+  margin-left: auto;
+  margin-right: auto;
+  border-width: 1px;
+  size="30";
+} 
+
+
+  #map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+  }
+
+  .leaflet-bar-mdl.leaflet-control {
+    margin: 8px 16px 8px 16px;
+  }
+  .leaflet-bar-mdl.leaflet-control button {
+    margin-bottom: 16px;
+    display: block;
+  }
+  @media (min-width: 840px) {
+    .leaflet-bar-mdl.leaflet-control {
+      margin: 24px 24px 0 24px;
+    }
+  }
+  
+}
+
+div.fix{
+  position: fixed;
+  top: 130px;
+  margin-left: 25px !important;
+  width: 140px;
+  height: 130px;
+  border: 5px solid #FFFFFF;
+  background:white;
+  clear: both;
+}
+
+
+.collapsible {
+  background-color: #FFFF;
+  color: black;
+  cursor: pointer;
+  padding: 0px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+div.fix2{
+  position: absolute;
+  top: 85px;
+
+  right: 25px !important;
+  width: 140px;
+  height: 25px;
+  border: 5px solid #FFFFFF;
+  background:white;
+  clear: both;
+}
+  
+  .active, .collapsible:hover {
+  color: #555;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: black;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.fix {
+  position: absolute;
+  top: 130px;
+
+  right: 25px !important;
+  width: 140px;
+  height: 130px;
+  border: 5px solid #FFFFFF;
+  background:white;
+  clear: both;
+  }
+  
+  
+  .fix {
+  content: "\2212";
+}
+</style>  
+
+</head>
+<!-- END OF STYLING -->
+
+<body>
+  
+  
+  <!-- MAPPING -->
+<div id='map'></div>
+  
+ <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js'></script>
+<script src="/Users/Chris/Documents/Projects/aeroster/dist/js/leaflet-material-min.js"></script> 
+  
+  
+  <script> 
+  var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
+		map = L.map('map', {
+			zoom: 12,
+			attributionControl: false,
+			center: L.latLng([12.1135221,-68.9495816]),
+			maxBounds: L.latLngBounds([[12.1135221,-68.9495816],[12.1135221,-68.9495816]]).pad(0.5),
+			layers: osmLayer
+		});
+
+	function iconByName(name) {
+		return '<i class="icon icon-'+name+'"></i>';
+	}
+
+	function featureToMarker(feature, latlng) {
+		return L.marker(latlng, {
+			icon: L.divIcon({
+				className: 'marker-'+feature.properties.amenity,
+				html: iconByName(feature.properties.amenity),
+				iconUrl: 'images/markers/'+feature.properties.amenity+'.png',
+				iconSize: [25, 41], iconAnchor: [12, 41],
+				popupAnchor: [1, -34], shadowSize: [41, 41]
+			})
+		});
+	}
+  
+	map.addControl( new L.Control.PanelLayers(
+		//baselayers
+		[
+			{
+				Streets: L.mapbox.tileLayer('mapbox.streets'),
+     Outdoors: L.mapbox.tileLayer('mapbox.outdoors'),
+    //Satellite: //L.mapbox.tileLayer('mapbox.satellite')
+			},
+	layers.Streets.addTo(map);
+		],
+		//overlays
+		[
+			{
+				name: "Blue bay beach",
+				background: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png',
+				layer: L.geoJson(Bar, {pointToLayer: featureToMarker })
+			},
+			{
+				name: "Willemstad",
+				background: 'https://github.com/stefanocudini/leaflet-panel-layers/tree/master/examples/images/icons/drinking_water.png',
+				layer: L.geoJson(Drinking_water, {pointToLayer: featureToMarker })
+			},
+				{
+				name: "Fort beekenburg",
+				background: 'https://github.com/stefanocudini/leaflet-panel-layers/tree/master/examples/images/icons/parking.png',
+				layer: L.geoJson(Parking, {pointToLayer: featureToMarker })
+			}
+		],
+		//options
+		{
+			buildItem: function(item) {
+
+				var points = item.layer.getLayers ? item.layer.getLayers().length : 0,
+					label = points ? ' #'+points : '',
+					size = Math.min(18,Math.max(9,points))+'px',
+					node = L.DomUtil.create('span','');
+
+				node.innerHTML = label;
+
+				if(points)
+					node.style.fontSize = size;
+
+				if(item.background) {
+					node.style.background = "url('"+item.background+"') center left no-repeat";
+					node.style.paddingLeft = '24px';
+				}
+
+				return node;
+			}
+		}
+	) );
+
+	L.control.panelLayers(null, [{
+		group: "WMS Natural Layers",
+		layers: [
+			{
+				active: true,
+				name: "Isolines",
+				layer: {
+					type: "tileLayer.wms",
+					args: ["https://siat.regione.umbria.it/arcgis/services/public/DBT_05_Orografia/MapServer/WMSServer", {
+							layers: '13',
+							format: 'image/png',
+							transparent: true,
+							opacity: 0.5
+						}
+					]
+				}
+			},
+			{
+				active: true,
+				name: "Streams",
+				layer: {
+					type: "tileLayer.wms",
+					args: ["https://siat.regione.umbria.it/arcgis/services/public/DBT_04_Idrografia/MapServer/WMSServer", {
+							layers: '6',
+							format: 'image/png',
+							transparent: true
+						}
+					]
+				}
+			}
+		]
+	}], {
+		position: 'bottomright',
+		buildItem: function(item) {
+
+            var $slider = $('<div class="layer-slider">');
+
+            var $input = $('<input type="text" value="' + item.layer.options.opacity + '" />');
+
+            $slider.append($input);
+
+            $input.ionRangeSlider({
+                min: 0.1,
+                max: 1,
+                step: 0.01,
+                hide_min_max: true,
+                hide_from_to: true,
+                from: item.layer.options.opacity,
+                onChange: function(o) {
+                    item.layer.setOpacity(o.from);
+                }
+            });
+
+            return $slider[0];
+    	}
+	}).addTo(map);
+  
+ </script>
+<script type="text/javascript" src="leaflet-panel-layers.src.js"></script>  
+  
+  
+  
+  */........................... /*
+  
+ <script>
+  // Search location (geocode) control
+var materialGeocodeControl =  new L.Control.MaterialGeocoderControl("mapbox.search" markerLocation:true}, {position: 'topleft', autoComplete: true}).addTo(map);
+    </script>
+
+<script>
+  L.Control.Attribution.prototype.options.position = "bottomleft";
+  
+  L.mapbox.accessToken = 'pk.eyJ1IjoiY3RpcHBldHQiLCJhIjoiS3lpTnN4MCJ9.YG_uH8r7IgwgcSWEPYROMA';
+  
+  //.........................MAP CENTER POSITION 
+  var map = L.mapbox.map('map', null ,{zoomControl: false, attributionControl: true})
+      .setView([12.1135221, -68.9495816], 12); //LONGITUDE, LATITUDE, ZOOM
+
+  var layers = {
+       
+     Streets: L.mapbox.tileLayer('mapbox.streets'),
+     Outdoors: L.mapbox.tileLayer('mapbox.outdoors'),
+    Satellite: L.mapbox.tileLayer('mapbox.satellite'),
+   
+  };
+  
+  layers.Streets.addTo(map);
+  
+  
+  
+  
+  
+  //....................MARKERS DISPLAY
+  
+ 
+
+ //.........................MARKER1 
+  function myFunction1()
+  {
+    
+    
+    var greenIcon = new L.Icon({
+  iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [30, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+
+var marker = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map);
+marker.url = 'https://tourmkr.com/F1ZMJ03W2y/9841911p,2838137m,317.10h,93.69t'
+//LINK TO URL WITH 360 or VIDEO
+  
+  
+  marker.on('mouseover', function(e) {
+  //open popup;
+  var popup = L.popup({
+  closeButton: false,
+  autoClose: false,
+  offset: [0, -30] 
+})
+   .setLatLng([12.1097, -68.9326])  
+   .setContent('Willemstad')
+   .openOn(map);
+});
+  
+ 
+marker.on('click', function(){
+window.location = (this.url);
+});
+  
+ var redIcon = new L.Icon({
+  iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [30, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+  
+var marker = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map);
+  
+  
+   marker.on('mouseover', function(e) {
+  //open popup;
+  var popup = L.popup({
+  closeButton: false,
+  autoClose: false,
+  offset: [0, -30]
+})
+   .setLatLng([12.072391989268953,-68.86200428009033]) 
+   .setContent('Fort Beekenburg')
+   .openOn(map);
+});
+  
+marker.url = 'https://tourmkr.com/F1ZMJ03W2y/9841829p,2838137m,7.93h,89.97t'
+  //LINK TO URL WITH 360 or VIDEO
+  marker.on('click', function(){
+window.location = (this.url);
+});
+  
+  
+
+  
+  //.........................MARKER2
+ 
+ var yellowIcon = new L.Icon({
+  iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [30, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+var marker = L.marker([12.0866391, -68.8997912], {icon: yellowIcon}).addTo(map);
+  
+   marker.on('mouseover', function(e) {
+  //open popup;
+  var popup = L.popup({
+  closeButton: false,
+  autoClose: false,
+  offset: [0, -30]  
+})
+   .setLatLng([12.0866391, -68.8997912]) 
+   .setContent('Mambo Beach')
+   .openOn(map);
+});
+  
+  
+  
+marker.url = 'https://tourmkr.com/F1ZMJ03W2y/9841843p,2838137m,69.28h,86.95t'
+//LINK TO URL WITH 360 or VIDEO
+marker.on('click', function(){
+window.location = (this.url);
+});
+
+ //.........................MARKER3
+  
+   var yellowIcon = new L.Icon({
+  iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [30, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+var marker = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map);
+  
+   marker.on('mouseover', function(e) {
+  //open popup;
+  var popup = L.popup({
+  closeButton: false,
+  autoClose: false,
+  offset: [0, -30]  
+})
+   .setLatLng([12.0866391, -68.8937912]) 
+   .setContent('Mambo Beach')
+   .openOn(map);
+});
+  
+  
+  
+marker.url = 'https://tourmkr.com/F1ZMJ03W2y/9841843p,2838137m,69.28h,86.95t'
+//LINK TO URL WITH 360 or VIDEO
+marker.on('click', function(){
+window.location = (this.url);
+});
+  
+ 
+  
+  //.........................MARKER4
+ //.........................MARKER5
+ 
+ var yellowIcon = new L.Icon({
+  iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [30, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+var marker = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map);
+  
+   marker.on('mouseover', function(e) {
+  //open popup;
+  var popup = L.popup({
+  closeButton: false,
+  autoClose: false,
+  offset: [0, -30]
+})
+   .setLatLng([12.134494803902554, -68.98499965667725]) 
+   .setContent('Blue Bay Beach')
+   .openOn(map);
+});
+  
+  
+  
+marker.url = 'https://tourmkr.com/F1ZMJ03W2y/9841842p,2838137m,140.20h,88.63t'
+//LINK TO URL WITH 360 or VIDEO
+marker.on('click', function(){
+window.location = (this.url);
+}); 
+  
+}
+  
+  
+  
+  
+  
+  function myFunction3() {
+     
+    
+  var greenIcon = new L.Icon({
+  iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [30, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+var marker = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map);
+marker.url = 'https://tourmkr.com/F1ZMJ03W2y/9841911p,2838137m,317.10h,93.69t'
+
+  
+  
+  marker.on('mouseover', function(e) {
+  //open popup;
+  var popup = L.popup({
+  closeButton: false,
+  autoClose: false,
+  offset: [0, -30] 
+})
+   .setLatLng([12.1097, -68.9326])  
+   .setContent('Willemstad')
+   .openOn(map);
+});
+  
+ 
+  
+marker.on('click', function(){
+window.location = (this.url);
+});
+  
+ var redIcon = new L.Icon({
+  iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [30, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+  
+  var marker = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map);
+  
+  
+   marker.on('mouseover', function(e) {
+  //open popup;
+  var popup = L.popup({
+  closeButton: false,
+  autoClose: false,
+  offset: [0, -30]
+})
+   .setLatLng([12.072391989268953,-68.86200428009033]) 
+   .setContent('Fort Beekenburg')
+   .openOn(map);
+});
+  
+marker.url = 'https://tourmkr.com/F1ZMJ03W2y/9841829p,2838137m,7.93h,89.97t'
+  //LINK TO URL WITH 360 or VIDEO
+  marker.on('click', function(){
+window.location = (this.url);
+});
+  
+  }
+
+  
+  //.........................MARKER2
+ 
+ var yellowIcon = new L.Icon({
+  iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [30, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+var marker = L.marker([12.0866391, -68.8997912], {icon: yellowIcon}).addTo(map);
+  
+   marker.on('mouseover', function(e) {
+  //open popup;
+  var popup = L.popup({
+  closeButton: false,
+  autoClose: false,
+  offset: [0, -30]  
+})
+   .setLatLng([12.0866391, -68.8997912]) 
+   .setContent('Mambo Beach')
+   .openOn(map);
+});
+  
+  
+  
+marker.url = 'https://tourmkr.com/F1ZMJ03W2y/9841843p,2838137m,69.28h,86.95t'
+//LINK TO URL WITH 360 or VIDEO
+marker.on('click', function(){
+window.location = (this.url);
+});
+
+
+ //.........................MARKER3
+  function myFunction2(){
+   var yellowIcon = new L.Icon({
+  iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [30, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+var marker = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map);
+  
+   marker.on('mouseover', function(e) {
+  //open popup;
+  var popup = L.popup({
+  closeButton: false,
+  autoClose: false,
+  offset: [0, -30]  
+})
+   .setLatLng([12.0866391, -68.8937912]) 
+   .setContent('Mambo Beach')
+   .openOn(map);
+});
+  
+  
+  
+marker.url = 'https://tourmkr.com/F1ZMJ03W2y/9841843p,2838137m,69.28h,86.95t'
+//LINK TO URL WITH 360 or VIDEO
+marker.on('click', function(){
+window.location = (this.url);
+});
+  
+ 
+  
+  //.........................MARKER4
+ //.........................MARKER5
+ 
+ var yellowIcon = new L.Icon({
+  iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [30, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+var marker = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map);
+  
+   marker.on('mouseover', function(e) {
+  //open popup;
+  var popup = L.popup({
+  closeButton: false,
+  autoClose: false,
+  offset: [0, -30]
+})
+   .setLatLng([12.134494803902554, -68.98499965667725]) 
+   .setContent('Blue Bay Beach')
+   .openOn(map);
+});
+  
+  
+  
+marker.url = 'https://tourmkr.com/F1ZMJ03W2y/9841842p,2838137m,140.20h,88.63t'
+//LINK TO URL WITH 360 or VIDEO
+marker.on('click', function(){
+window.location = (this.url);
+}); 
+  
+}
+    
+ </script>   
+ 
+ 
+ <!-- ..............END OF MARKERS -->
+ 
+  
+ 
+<div class="fix2"> <button onclick="myFunction()" id="collapsible" class="collapsible"> Categories </button> </div>
+  
+  
+ 
+  <div id="fix" class="fix">
+    
+    <input type="checkbox" id="myCheck"  onclick="myFunction1()" value="first_checkbox"> <label>Show All<hr/></label>
+    
+ 
+    <input type="checkbox" id="cbox3" onclick="myFunction2()" value="first_checkbox"> <label class="italic" for="cbox2">Beaches </label>&emsp;
+
+       <img src="https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png" style="width:18px;height:25px;"> <br>
+    
+<input type="checkbox" id="cbox3" onclick="myFunction3()" value="second_checkbox"> <label class="italic"for="cbox2">Hotspots </label>&emsp;
+ <img src="https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png" style="width:18px;height:25px;"> 
+    <br>
+    
+  <input type="checkbox" id="cbox3" onclick="myFunction4()"  value="second_checkbox"> <label class="italic" for="cbox2">Activities </label>&emsp;
+ <img src="https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/activities.png" style="width:18px;height:25px;"> 
+    <br> 
+    
+    
+  
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
