@@ -34,6 +34,7 @@ font-size: 19px;
 vertical-align: 5px; 
 }  
 
+
   #map {
     position: absolute;
     top: 0;
@@ -125,6 +126,15 @@ div.fix2{
   
   .fix {
   content: "\2212";
+}
+.leaflet-popup-close-button {
+  display: none; 
+}
+@media only screen and (max-width: 840px) {
+  .mdl-textfield {
+    margin-right: 9px;
+    margin-top: 16px;
+  }
 }
 </style>  
 
@@ -320,6 +330,15 @@ var materialGeocodeControl =  new L.Control.MaterialGeocoderControl("mapbox.sear
 // MARKERS AREA //
 var marker1, marker2, marker3, marker4, marker5;
 marker1 = marker2 = marker3 = marker4 = marker5 = {};
+var markers_name_collection = {
+  0: 'willemstad', 
+  1: 'fort beekenburg', 
+  2: 'mambo beach', 
+  3: 'blue bay beach', 
+  4: 'mambo beach'
+};
+var mc = [];
+// marker1.name = 
 function addMarker1() {
   var greenIcon = new L.Icon({
     iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png',
@@ -329,7 +348,7 @@ function addMarker1() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker1 = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map);
+  marker1 = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map).bindPopup("Willemstad");
   marker1.url = 'https://tourmkr.com/F1ZMJ03W2y/9841911p,2838137m,317.10h,93.69t';
   marker1.on('mouseover', function(e) {
     //open popup;
@@ -344,8 +363,9 @@ function addMarker1() {
   });
 
   marker1.on('click', function(){
-  window.location = (this.url);
+    window.location = (this.url);
   });
+  mc = [marker1, marker2, marker3, marker4, marker5];
 }
 function addMarker2() {
   var redIcon = new L.Icon({
@@ -356,7 +376,7 @@ function addMarker2() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker2 = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map);
+  marker2 = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map).bindPopup('Fort Beekenburg');
   marker2.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -373,6 +393,7 @@ function addMarker2() {
     marker2.on('click', function(){
     window.location = (this.url);
   });
+  mc = [marker1, marker2, marker3, marker4, marker5];
 }
 function addMarker3() {
   var yellowIcon = new L.Icon({
@@ -383,7 +404,7 @@ function addMarker3() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker3 = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map);
+  marker3 = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach');
   marker3.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -400,6 +421,7 @@ function addMarker3() {
   marker3.on('click', function(){
   window.location = (this.url);
   });
+  mc = [marker1, marker2, marker3, marker4, marker5];
 }
 function addMarker4() {
   var yellowIcon = new L.Icon({
@@ -410,7 +432,7 @@ function addMarker4() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker4 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map);
+  marker4 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach');
   marker4.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -428,9 +450,8 @@ function addMarker4() {
   marker4.on('click', function(){
     window.location = (this.url);
   }); 
+  mc = [marker1, marker2, marker3, marker4, marker5];
 }
-
-
 
 function addMarker5() {
   var yellowIcon = new L.Icon({
@@ -441,7 +462,7 @@ function addMarker5() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker5 = L.marker([12.1866391, -68.8797912], {icon: blueIcon}).addTo(map);
+  marker5 = L.marker([12.0866391, -68.8997912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach');
   marker5.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -459,6 +480,7 @@ function addMarker5() {
   marker5.on('click', function(){
     window.location = (this.url);
   }); 
+  mc = [marker1, marker2, marker3, marker4, marker5];
 }
 
 
@@ -474,19 +496,24 @@ function addMarker5() {
     var marker_visible = el.checked;
     
     if (!marker_visible) {
-      marker1._removeIcon();
-      marker1._removeShadow();
+      if (typeof marker1._removeIcon != 'undefined') {
+        marker1._removeIcon();
+        marker1._removeShadow();
+      }
       marker2._removeIcon();
       marker2._removeShadow();
       marker3._removeIcon();
       marker3._removeShadow();
       marker4._removeIcon();
       marker4._removeShadow();
+      marker5._removeIcon();
+      marker5._removeShadow();
     } else if (marker_visible) {
       addMarker1();
       addMarker2();
       addMarker3();
       addMarker4();
+      addMarker5();
     }
   
   
@@ -498,12 +525,14 @@ function addMarker5() {
     if (marker_visible) {
       addMarker1();
       addMarker2();
-	  
+      addMarker5();
     } else if (!marker_visible) {
       marker1._removeIcon();
       marker1._removeShadow();
       marker2._removeIcon();
       marker2._removeShadow();
+      marker5._removeIcon();
+      marker5._removeShadow();
     }
  }
 
@@ -521,11 +550,9 @@ function addMarker5() {
       marker4._removeIcon();
       marker4._removeShadow();
     }
+   }
+   function myFunction4() {
 
-  
-    
- 
- 
    }
   addMarker1();
   addMarker2();
@@ -534,8 +561,6 @@ function addMarker5() {
   addMarker5();  
    //...............END OF MARKERS
  </script>   
-
-  
 
  
 <div class="fix2"> <button onclick="myFunction(this);" id="collapsible" class="collapsible"> Categories </button> </div>
@@ -559,7 +584,20 @@ function addMarker5() {
  <img src="https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/activities.png" style="width:18px;height:25px;"> 
     <br> 
     
-    
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+  var search_input_el = document.getElementById('mapbox-geocoder-mdl');
+  search_input_el.addEventListener("keyup", function() {
+    var input_value = (this.value).trim();
+    for (var key in markers_name_collection) {
+      if ((markers_name_collection[key].indexOf(input_value) != -1) && input_value.length > 2) {
+        mc[key].openPopup();
+        console.log(key);
+      }
+    }
+  });
+});
+</script>
 </body>
 </html>
 <!-- partial -->
