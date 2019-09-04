@@ -18,6 +18,8 @@
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet'>
 <link href='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.css' rel='stylesheet' />
 
+
+<!-- STYLING -->
  <style>
 hr { 
   display: block;
@@ -135,62 +137,34 @@ div.fix2{
   }
 }
 </style>  
-
-
-
-
-
-
-
-
-  
+<!-- STYLING -->
 </head>
 <body>
   
 <div id='map'></div>
   
-<!-- <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script> -->
+
 <script src='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.js'></script>
 <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
-<!-- <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js'></script> -->
-<!-- <script src="/Users/Chris/Documents/Projects/aeroster/dist/js/leaflet-material-min.js"></script>  -->
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
-  
-  
 
-<!-- <script type="text/javascript" src="leaflet-panel-layers.src.js"></script>   -->
-  
-  
-  
- 
-  
- <script>
-  // Search location (geocode) control
-// var materialGeocodeControl =  new L.Control.MaterialGeocoderControl("mapbox.search" markerLocation:true}, {position: 'topleft', autoComplete: true}).addTo(map);
-    </script>
 
 <script>
   L.Control.Attribution.prototype.options.position = "bottomleft";
-  
   L.mapbox.accessToken = 'pk.eyJ1IjoiY3RpcHBldHQiLCJhIjoiS3lpTnN4MCJ9.YG_uH8r7IgwgcSWEPYROMA';
   
   //.........................MAP CENTER POSITION 
   var map = L.mapbox.map('map', null ,{zoomControl: false, attributionControl: true})
       .setView([12.1135221, -68.9495816], 12); //LONGITUDE, LATITUDE, ZOOM
-
   var layers = {
-       
      Streets: L.mapbox.tileLayer('mapbox.streets'),
      Outdoors: L.mapbox.tileLayer('mapbox.outdoors'),
     Satellite: L.mapbox.tileLayer('mapbox.satellite'),
-   
   };
-  
   layers.Streets.addTo(map);
   
-  //....................MARKERS DISPLAY
   
- 
+  //....................MARKERS DISPLAY
 
 // MARKERS AREA //
 var marker1, marker2, marker3, marker4, marker5;
@@ -213,13 +187,13 @@ function addMarker1() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker1 = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map).bindPopup("Willemstad", {closeOnClick: true, autoClose: false});
-  marker1.url = 'https://tourmkr.com/F1ZMJ03W2y/9841911p,2838137m,317.10h,93.69t';
+  marker1 = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map).bindPopup("Willemstad", {closeOnClick: true, autoClose: true});
+  marker1.url = 'https://iarakistain.github.io/Tactizity.github.io/361/index.html';
   marker1.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
     closeButton: false,
-    autoClose: false,
+    autoClose: true,
     offset: [0, -30] 
   })
     .setLatLng([12.1097, -68.9326])  
@@ -241,19 +215,19 @@ function addMarker2() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker2 = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map).bindPopup('Fort Beekenburg', {closeOnClick: true, autoClose: false});
+  marker2 = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map).bindPopup('Fort Beekenburg', {closeOnClick: true, autoClose: true});
   marker2.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
     closeButton: false,
-    autoClose: false,
+    autoClose: true,
     offset: [0, -30]
   })
     .setLatLng([12.072391989268953,-68.86200428009033]) 
     .setContent('Fort Beekenburg')
     .openOn(map);
   });
-  marker2.url = 'https://tourmkr.com/F1ZMJ03W2y/9841829p,2838137m,7.93h,89.97t'
+  marker2.url = 'https://iarakistain.github.io/Tactizity.github.io/362/index.html'
     //LINK TO URL WITH 360 or VIDEO
     marker2.on('click', function(){
     window.location = (this.url);
@@ -269,19 +243,19 @@ function addMarker3() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker3 = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach', {closeOnClick: true, autoClose: false});
+  marker3 = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach', {closeOnClick: true, autoClose: true});
   marker3.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
     closeButton: false,
-    autoClose: false,
+    autoClose: true,
     offset: [0, -30]  
   })
     .setLatLng([12.0866391, -68.8937912]) 
     .setContent('Mambo Beach')
     .openOn(map);
   });
-  marker3.url = 'https://tourmkr.com/F1ZMJ03W2y/9841843p,2838137m,69.28h,86.95t'
+  marker3.url = 'https://iarakistain.github.io/Tactizity.github.io/363/index.html'
   //LINK TO URL WITH 360 or VIDEO
   marker3.on('click', function(){
   window.location = (this.url);
@@ -297,12 +271,12 @@ function addMarker4() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker4 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach', {closeOnClick: true, autoClose: false});
+  marker4 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach', {closeOnClick: true, autoClose: true});
   marker4.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
     closeButton: false,
-    autoClose: false,
+    autoClose: true,
     offset: [0, -30]
   })
     .setLatLng([12.134494803902554, -68.98499965667725]) 
@@ -310,7 +284,7 @@ function addMarker4() {
     .openOn(map);
   });
     
-  marker4.url = 'https://tourmkr.com/F1ZMJ03W2y/9841842p,2838137m,140.20h,88.63t'
+  marker4.url = 'https://iarakistain.github.io/Tactizity.github.io/364/index.html'
   //LINK TO URL WITH 360 or VIDEO
   marker4.on('click', function(){
     window.location = (this.url);
@@ -327,12 +301,12 @@ function addMarker5() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker5 = L.marker([12.0866391, -68.8997912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach', {closeOnClick: true, autoClose: false});
+  marker5 = L.marker([12.0866391, -68.8997912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach', {closeOnClick: true, autoClose: true});
   marker5.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
     closeButton: false,
-    autoClose: false,
+    autoClose: true,
     offset: [0, -30]
   })
     .setLatLng([12.0866391, -68.8997912]) 
@@ -340,21 +314,14 @@ function addMarker5() {
     .openOn(map);
   });
     
-  marker5.url = 'https://tourmkr.com/F1ZMJ03W2y/9841843p,2838137m,69.28h,86.95t'
+  marker5.url = 'https://iarakistain.github.io/Tactizity.github.io/364/index.html'
   //LINK TO URL WITH 360 or VIDEO
   marker5.on('click', function(){
     window.location = (this.url);
   }); 
   mc = [marker1, marker2, marker3, marker4, marker5];
 }
-
-
-
-
-
-
 // ../ MARKERS AREA //
-
  //.........................MARKER1 
   function myFunction1(el)
   {
@@ -422,9 +389,6 @@ function addMarker5() {
       document.getElementById('myCheck').checked = false;
     }
  }
-
-  
-  
  //.........................MARKER3
   function myFunction2(el){
     var marker_visible = el.checked;
@@ -441,7 +405,6 @@ function addMarker5() {
     }
    }
    function myFunction4() {
-
    }
   addMarker1();
   addMarker2();
@@ -453,9 +416,6 @@ function addMarker5() {
 
  
 <div class="fix2"> <button onclick="myFunction(this);" id="collapsible" class="collapsible"> Categories </button> </div>
-  
-  
- 
   <div id="fix" class="fix">
     
     <input type="checkbox" id="myCheck"  onclick="myFunction1(this);" value="first_checkbox" checked="true"> <label>Show All<hr/></label>
@@ -499,6 +459,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
 </html>
 <!-- partial -->
   <script  src="./script.js"></script>
-
 </body>
 </html>
