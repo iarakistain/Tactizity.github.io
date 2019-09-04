@@ -12,11 +12,14 @@
 <meta charset=utf-8 />
 <title>Showme Caribean Curacao map</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<!-- <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' /> -->
 <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">   
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet'>
+<link href='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.css' rel='stylesheet' />
 
+
+<!-- STYLING -->
  <style>
 hr { 
   display: block;
@@ -25,39 +28,37 @@ hr {
   margin-left: auto;
   margin-right: auto;
   border-width: 1px;
-  size="30";
+  size: 30;
 } 
 
-br 
-{ 
-font-size: 21px; 
-vertical-align: 6px; 
+br { 
+  font-size: 19px; 
+  vertical-align: 5px; 
 }  
 
-  #map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    content: '';
-  }
-
-  .leaflet-bar-mdl.leaflet-control {
-    margin: 8px 16px 8px 16px;
-  }
-  .leaflet-bar-mdl.leaflet-control button {
-    margin-bottom: 16px;
-    display: block;
-  }
-  @media (min-width: 840px) {
-    .leaflet-bar-mdl.leaflet-control {
-      margin: 24px 24px 0 24px;
-    }
-  }
-  
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: '';
 }
 
+#map { position:absolute; top:0; bottom:0; width:100%; }
+
+.leaflet-bar-mdl.leaflet-control {
+  margin: 8px 16px 8px 16px;
+}
+.leaflet-bar-mdl.leaflet-control button {
+  margin-bottom: 16px;
+  display: block;
+}
+@media (min-width: 840px) {
+  .leaflet-bar-mdl.leaflet-control {
+    margin: 24px 24px 0 24px;
+  }
+}
 
 div.fix{
   position: fixed;
@@ -136,195 +137,34 @@ div.fix2{
   }
 }
 </style>  
-
-
-
-
-
-
-
-
-  
+<!-- STYLING -->
 </head>
 <body>
   
 <div id='map'></div>
   
- <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+
+<script src='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.js'></script>
 <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
-<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js'></script>
-<script src="/Users/Chris/Documents/Projects/aeroster/dist/js/leaflet-material-min.js"></script> 
-  
-  
-  <script> 
-  var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
-		map = L.map('map', {
-			zoom: 12,
-			attributionControl: false,
-			center: L.latLng([12.1135221,-68.9495816]),
-			maxBounds: L.latLngBounds([[12.1135221,-68.9495816],[12.1135221,-68.9495816]]).pad(0.5),
-			layers: osmLayer
-		});
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
 
-	function iconByName(name) {
-		return '<i class="icon icon-'+name+'"></i>';
-	}
-
-	function featureToMarker(feature, latlng) {
-		return L.marker(latlng, {
-			icon: L.divIcon({
-				className: 'marker-'+feature.properties.amenity,
-				html: iconByName(feature.properties.amenity),
-				iconUrl: 'images/markers/'+feature.properties.amenity+'.png',
-				iconSize: [25, 41], iconAnchor: [12, 41],
-				popupAnchor: [1, -34], shadowSize: [41, 41]
-			})
-		});
-	}
-  
-	map.addControl( new L.Control.PanelLayers(
-		//baselayers
-		[
-			{
-				Streets: L.mapbox.tileLayer('mapbox.streets'),
-     Outdoors: L.mapbox.tileLayer('mapbox.outdoors'),
-    //Satellite: //L.mapbox.tileLayer('mapbox.satellite')
-			},
-	layers.Streets.addTo(map);
-		],
-		//overlays
-		[
-			{
-				name: "Blue bay beach",
-				background: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png',
-				layer: L.geoJson(Bar, {pointToLayer: featureToMarker })
-			},
-			{
-				name: "Willemstad",
-				background: 'https://github.com/stefanocudini/leaflet-panel-layers/tree/master/examples/images/icons/drinking_water.png',
-				layer: L.geoJson(Drinking_water, {pointToLayer: featureToMarker })
-			},
-				{
-				name: "Fort beekenburg",
-				background: 'https://github.com/stefanocudini/leaflet-panel-layers/tree/master/examples/images/icons/parking.png',
-				layer: L.geoJson(Parking, {pointToLayer: featureToMarker })
-			}
-		],
-		//options
-		{
-			buildItem: function(item) {
-
-				var points = item.layer.getLayers ? item.layer.getLayers().length : 0,
-					label = points ? ' #'+points : '',
-					size = Math.min(18,Math.max(9,points))+'px',
-					node = L.DomUtil.create('span','');
-
-				node.innerHTML = label;
-
-				if(points)
-					node.style.fontSize = size;
-
-				if(item.background) {
-					node.style.background = "url('"+item.background+"') center left no-repeat";
-					node.style.paddingLeft = '24px';
-				}
-
-				return node;
-			}
-		}
-	) );
-
-	L.control.panelLayers(null, [{
-		group: "WMS Natural Layers",
-		layers: [
-			{
-				active: true,
-				name: "Isolines",
-				layer: {
-					type: "tileLayer.wms",
-					args: ["https://siat.regione.umbria.it/arcgis/services/public/DBT_05_Orografia/MapServer/WMSServer", {
-							layers: '13',
-							format: 'image/png',
-							transparent: true,
-							opacity: 0.5
-						}
-					]
-				}
-			},
-			{
-				active: true,
-				name: "Streams",
-				layer: {
-					type: "tileLayer.wms",
-					args: ["https://siat.regione.umbria.it/arcgis/services/public/DBT_04_Idrografia/MapServer/WMSServer", {
-							layers: '6',
-							format: 'image/png',
-							transparent: true
-						}
-					]
-				}
-			}
-		]
-	}], {
-		position: 'bottomright',
-		buildItem: function(item) {
-
-            var $slider = $('<div class="layer-slider">');
-
-            var $input = $('<input type="text" value="' + item.layer.options.opacity + '" />');
-
-            $slider.append($input);
-
-            $input.ionRangeSlider({
-                min: 0.1,
-                max: 1,
-                step: 0.01,
-                hide_min_max: true,
-                hide_from_to: true,
-                from: item.layer.options.opacity,
-                onChange: function(o) {
-                    item.layer.setOpacity(o.from);
-                }
-            });
-
-            return $slider[0];
-    	}
-	}).addTo(map);
-  
- </script>
-<script type="text/javascript" src="leaflet-panel-layers.src.js"></script>  
-  
-  
-  
- 
-  
- <script>
-  // Search location (geocode) control
-var materialGeocodeControl =  new L.Control.MaterialGeocoderControl("mapbox.search" markerLocation:true}, {position: 'topleft', autoComplete: true}).addTo(map);
-    </script>
 
 <script>
   L.Control.Attribution.prototype.options.position = "bottomleft";
-  
   L.mapbox.accessToken = 'pk.eyJ1IjoiY3RpcHBldHQiLCJhIjoiS3lpTnN4MCJ9.YG_uH8r7IgwgcSWEPYROMA';
   
   //.........................MAP CENTER POSITION 
   var map = L.mapbox.map('map', null ,{zoomControl: false, attributionControl: true})
       .setView([12.1135221, -68.9495816], 12); //LONGITUDE, LATITUDE, ZOOM
-
   var layers = {
-       
      Streets: L.mapbox.tileLayer('mapbox.streets'),
      Outdoors: L.mapbox.tileLayer('mapbox.outdoors'),
     Satellite: L.mapbox.tileLayer('mapbox.satellite'),
-   
   };
-  
   layers.Streets.addTo(map);
   
-  //....................MARKERS DISPLAY
   
- 
+  //....................MARKERS DISPLAY
 
 // MARKERS AREA //
 var marker1, marker2, marker3, marker4, marker5;
@@ -347,13 +187,13 @@ function addMarker1() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker1 = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map).bindPopup("Willemstad");
-  marker1.url = 'https://tourmkr.com/F1ZMJ03W2y/9841911p,2838137m,317.10h,93.69t';
+  marker1 = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map).bindPopup("Willemstad", {closeOnClick: true, autoClose: true});
+  marker1.url = 'https://iarakistain.github.io/Tactizity.github.io/361/index.html';
   marker1.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
     closeButton: false,
-    autoClose: false,
+    autoClose: true,
     offset: [0, -30] 
   })
     .setLatLng([12.1097, -68.9326])  
@@ -375,19 +215,19 @@ function addMarker2() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker2 = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map).bindPopup('Fort Beekenburg');
+  marker2 = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map).bindPopup('Fort Beekenburg', {closeOnClick: true, autoClose: true});
   marker2.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
     closeButton: false,
-    autoClose: false,
+    autoClose: true,
     offset: [0, -30]
   })
     .setLatLng([12.072391989268953,-68.86200428009033]) 
     .setContent('Fort Beekenburg')
     .openOn(map);
   });
-  marker2.url = 'https://tourmkr.com/F1ZMJ03W2y/9841829p,2838137m,7.93h,89.97t'
+  marker2.url = 'https://iarakistain.github.io/Tactizity.github.io/362/index.html'
     //LINK TO URL WITH 360 or VIDEO
     marker2.on('click', function(){
     window.location = (this.url);
@@ -403,19 +243,19 @@ function addMarker3() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker3 = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach');
+  marker3 = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach', {closeOnClick: true, autoClose: true});
   marker3.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
     closeButton: false,
-    autoClose: false,
+    autoClose: true,
     offset: [0, -30]  
   })
     .setLatLng([12.0866391, -68.8937912]) 
     .setContent('Mambo Beach')
     .openOn(map);
   });
-  marker3.url = 'https://tourmkr.com/F1ZMJ03W2y/9841843p,2838137m,69.28h,86.95t'
+  marker3.url = 'https://iarakistain.github.io/Tactizity.github.io/363/index.html'
   //LINK TO URL WITH 360 or VIDEO
   marker3.on('click', function(){
   window.location = (this.url);
@@ -431,12 +271,12 @@ function addMarker4() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker4 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach');
+  marker4 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach', {closeOnClick: true, autoClose: true});
   marker4.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
     closeButton: false,
-    autoClose: false,
+    autoClose: true,
     offset: [0, -30]
   })
     .setLatLng([12.134494803902554, -68.98499965667725]) 
@@ -444,7 +284,7 @@ function addMarker4() {
     .openOn(map);
   });
     
-  marker4.url = 'https://tourmkr.com/F1ZMJ03W2y/9841842p,2838137m,140.20h,88.63t'
+  marker4.url = 'https://iarakistain.github.io/Tactizity.github.io/364/index.html'
   //LINK TO URL WITH 360 or VIDEO
   marker4.on('click', function(){
     window.location = (this.url);
@@ -461,12 +301,12 @@ function addMarker5() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker5 = L.marker([12.0866391, -68.8997912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach');
+  marker5 = L.marker([12.0866391, -68.8997912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach', {closeOnClick: true, autoClose: true});
   marker5.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
     closeButton: false,
-    autoClose: false,
+    autoClose: true,
     offset: [0, -30]
   })
     .setLatLng([12.0866391, -68.8997912]) 
@@ -474,31 +314,22 @@ function addMarker5() {
     .openOn(map);
   });
     
-  marker5.url = 'https://tourmkr.com/F1ZMJ03W2y/9841843p,2838137m,69.28h,86.95t'
+  marker5.url = 'https://iarakistain.github.io/Tactizity.github.io/364/index.html'
   //LINK TO URL WITH 360 or VIDEO
   marker5.on('click', function(){
     window.location = (this.url);
   }); 
   mc = [marker1, marker2, marker3, marker4, marker5];
 }
-
-
-
-
-
-
 // ../ MARKERS AREA //
-
  //.........................MARKER1 
   function myFunction1(el)
   {
     var marker_visible = el.checked;
     
     if (!marker_visible) {
-      if (typeof marker1._removeIcon != 'undefined') {
-        marker1._removeIcon();
-        marker1._removeShadow();
-      }
+      marker1._removeIcon();
+      marker1._removeShadow();
       marker2._removeIcon();
       marker2._removeShadow();
       marker3._removeIcon();
@@ -507,12 +338,34 @@ function addMarker5() {
       marker4._removeShadow();
       marker5._removeIcon();
       marker5._removeShadow();
+
+      document.getElementById('cbox3').checked = false;
+      document.getElementById('cbox4').checked = false;
+      document.getElementById('cbox5').checked = false;
     } else if (marker_visible) {
+      if (document.getElementById('cbox3').checked) {
+        marker1._removeIcon();
+        marker1._removeShadow();
+        marker2._removeIcon();
+        marker2._removeShadow();
+        marker5._removeIcon();
+        marker5._removeShadow();
+      }
+      if (document.getElementById('cbox4').checked) {
+        marker3._removeIcon();
+        marker3._removeShadow();
+        marker4._removeIcon();
+        marker4._removeShadow();
+      }
       addMarker1();
       addMarker2();
       addMarker3();
       addMarker4();
       addMarker5();
+
+      document.getElementById('cbox3').checked = true;
+      document.getElementById('cbox4').checked = true;
+      document.getElementById('cbox5').checked = true;
     }
   
   
@@ -532,11 +385,10 @@ function addMarker5() {
       marker2._removeShadow();
       marker5._removeIcon();
       marker5._removeShadow();
+
+      document.getElementById('myCheck').checked = false;
     }
  }
-
-  
-  
  //.........................MARKER3
   function myFunction2(el){
     var marker_visible = el.checked;
@@ -548,10 +400,11 @@ function addMarker5() {
       marker3._removeShadow();
       marker4._removeIcon();
       marker4._removeShadow();
+
+      document.getElementById('myCheck').checked = false;
     }
    }
    function myFunction4() {
-
    }
   addMarker1();
   addMarker2();
@@ -563,21 +416,18 @@ function addMarker5() {
 
  
 <div class="fix2"> <button onclick="myFunction(this);" id="collapsible" class="collapsible"> Categories </button> </div>
-  
-  
- 
   <div id="fix" class="fix">
     
     <input type="checkbox" id="myCheck"  onclick="myFunction1(this);" value="first_checkbox" checked="true"> <label>Show All<hr/></label>
     
-	<input type="checkbox" id="cbox3" onclick="myFunction3(this);" value="second_checkbox" checked="true"> <label class="italic"for="cbox2">Beaches </label>&emsp;
+	<input type="checkbox" id="cbox3" onclick="myFunction3(this);" value="second_checkbox" checked="true"> <label class="italic" for="cbox2">Beaches </label>&emsp;
  <img src="https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png" style="width:18px;height:25px;"> 
     <br>
  
-    <input type="checkbox" id="cbox3" onclick="myFunction2(this);" value="first_checkbox" checked="true"> <label class="italic" for="cbox2">Hotspots </label>&emsp;
+    <input type="checkbox" id="cbox4" onclick="myFunction2(this);" value="first_checkbox" checked="true"> <label class="italic" for="cbox2">Hotspots </label>&emsp;
        <img src="https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png" style="width:18px;height:25px;"> <br>
     
-  <input type="checkbox" id="cbox3" onclick="myFunction4()"  value="second_checkbox" checked="true"> <label class="italic" for="cbox2">Activities </label>&emsp;
+  <input type="checkbox" id="cbox5" onclick="myFunction4()"  value="second_checkbox" checked="true"> <label class="italic" for="cbox2">Activities </label>&emsp;
  <img src="https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/activities.png" style="width:18px;height:25px;"> 
     <br> 
     
@@ -589,16 +439,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
     for (var key in markers_name_collection) {
       if ((markers_name_collection[key].indexOf(input_value) != -1) && input_value.length > 2) {
         mc[key].openPopup();
-        console.log(key);
       }
     }
   });
+
+  // FOR MOBILE
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    document.querySelector('.mdl-textfield').style.display = "none";
+
+    marker1.openPopup();
+    marker2.openPopup();
+    marker3.openPopup();
+    marker4.openPopup();
+    marker5.openPopup();
+  }
 });
 </script>
 </body>
 </html>
 <!-- partial -->
   <script  src="./script.js"></script>
-
 </body>
 </html>
