@@ -100,13 +100,13 @@ div.fix2{
 .collapsible:after {
   content: '\02C5';
   width: 25px;
-  font-size:15px;
+  font-size:16px;
   transform: scale(1.5, 1);
   display: inline-block;
   color: black;
   font-weight: normal;
   float: right;
-  margin-left: 5px;
+  margin-left: 2px;
 }
 
 .active:after {
@@ -185,12 +185,12 @@ div.fix2{
     Outdoors: L.mapbox.tileLayer('mapbox.outdoors'),
     Satellite: L.mapbox.tileLayer('mapbox.satellite'),
   };
-  layers.Streets.addTo(map);
+ // layers.Streets.addTo(map);
 
-  // map.addSource("mapbox-satellite", { "type": "raster", "url": "mapbox://mapbox.satellite", "tileSize": 256 }); 
+  //map.addSource("mapbox-satellite", { "type": "raster", "url": "mapbox://mapbox.satellite", "tileSize": 256 }); 
 
-  // map.addLayer({ "type": "raster", "id": 'satellite-map', "source": "mapbox-satellite" });
-  // map.addLayer({Streets: L.mapbox.tileLayer('mapbox.streets')});
+  //map.addLayer({ "type": "raster", "id": 'satellite-map', "source": "mapbox-satellite" });
+ // map.addLayer({Streets: L.mapbox.tileLayer('mapbox.streets')});
   //....................MARKERS DISPLAY
 
 // MARKERS AREA //
