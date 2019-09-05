@@ -12,14 +12,12 @@
 <meta charset=utf-8 />
 <title>Showme Caribean Curacao map</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<!-- <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' /> -->
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
 <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">   
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet'>
-<link href='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.css' rel='stylesheet' />
+<!-- <link href='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.css' rel='stylesheet' /> -->
 
-
-<!-- STYLING -->
  <style>
 hr { 
   display: block;
@@ -136,34 +134,58 @@ div.fix2{
     margin-top: 16px;
   }
 }
+@media only screen and (max-width: 840px) {
+  div.fix2 {
+    position: absolute;
+    top: 30px;
+  }
+  div.fix {
+    top: 78px;
+  }
+}
 </style>  
-<!-- STYLING -->
 </head>
 <body>
   
 <div id='map'></div>
-  
-
-<script src='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.js'></script>
+<script>
+// if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+//   var el = document.createElement('script');
+//   el.src = "https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.js";
+//   document.body;
+// } else {
+//  "https://api.tiles.mapbox.com/mapbox.js/v1.2.1/mapbox.js"
+// }
+</script>
+<script src="https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/1.3.0/mapbox-gl.js"></script> -->
 <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
-<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
-
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js'></script>
+<!-- <script src="/Users/Chris/Documents/Projects/aeroster/dist/js/leaflet-material-min.js"></script>  -->
+<!-- <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script> -->
+<!-- <script type="text/javascript" src="leaflet-panel-layers.src.js"></script>   -->
+ <script>
+  // Search location (geocode) control
+// var materialGeocodeControl =  new L.Control.MaterialGeocoderControl("mapbox.search" markerLocation:true}, {position: 'topleft', autoComplete: true}).addTo(map);
+    </script>
 
 <script>
   L.Control.Attribution.prototype.options.position = "bottomleft";
   L.mapbox.accessToken = 'pk.eyJ1IjoiY3RpcHBldHQiLCJhIjoiS3lpTnN4MCJ9.YG_uH8r7IgwgcSWEPYROMA';
-  
   //.........................MAP CENTER POSITION 
   var map = L.mapbox.map('map', null ,{zoomControl: false, attributionControl: true})
       .setView([12.1135221, -68.9495816], 12); //LONGITUDE, LATITUDE, ZOOM
   var layers = {
-     Streets: L.mapbox.tileLayer('mapbox.streets'),
-     Outdoors: L.mapbox.tileLayer('mapbox.outdoors'),
+    Streets: L.mapbox.tileLayer('mapbox.streets'),
+    Outdoors: L.mapbox.tileLayer('mapbox.outdoors'),
     Satellite: L.mapbox.tileLayer('mapbox.satellite'),
   };
   layers.Streets.addTo(map);
-  
-  
+
+  // map.addSource("mapbox-satellite", { "type": "raster", "url": "mapbox://mapbox.satellite", "tileSize": 256 }); 
+
+  // map.addLayer({ "type": "raster", "id": 'satellite-map', "source": "mapbox-satellite" });
+  // map.addLayer({Streets: L.mapbox.tileLayer('mapbox.streets')});
   //....................MARKERS DISPLAY
 
 // MARKERS AREA //
@@ -187,8 +209,8 @@ function addMarker1() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker1 = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map).bindPopup("Willemstad", {closeOnClick: true, autoClose: true});
-  marker1.url = 'https://iarakistain.github.io/Tactizity.github.io/361/index.html';
+  marker1 = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map);
+  marker1.url = 'https://tourmkr.com/F1ZMJ03W2y/9841911p,2838137m,317.10h,93.69t';
   marker1.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -215,7 +237,7 @@ function addMarker2() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker2 = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map).bindPopup('Fort Beekenburg', {closeOnClick: true, autoClose: true});
+  marker2 = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map).bindPopup('Fort Beekenburg');
   marker2.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -227,7 +249,7 @@ function addMarker2() {
     .setContent('Fort Beekenburg')
     .openOn(map);
   });
-  marker2.url = 'https://iarakistain.github.io/Tactizity.github.io/362/index.html'
+  marker2.url = 'https://tourmkr.com/F1ZMJ03W2y/9841829p,2838137m,7.93h,89.97t'
     //LINK TO URL WITH 360 or VIDEO
     marker2.on('click', function(){
     window.location = (this.url);
@@ -243,7 +265,7 @@ function addMarker3() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker3 = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach', {closeOnClick: true, autoClose: true});
+  marker3 = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach');
   marker3.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -255,7 +277,7 @@ function addMarker3() {
     .setContent('Mambo Beach')
     .openOn(map);
   });
-  marker3.url = 'https://iarakistain.github.io/Tactizity.github.io/363/index.html'
+  marker3.url = 'https://tourmkr.com/F1ZMJ03W2y/9841843p,2838137m,69.28h,86.95t'
   //LINK TO URL WITH 360 or VIDEO
   marker3.on('click', function(){
   window.location = (this.url);
@@ -271,7 +293,7 @@ function addMarker4() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker4 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach', {closeOnClick: true, autoClose: true});
+  marker4 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach');
   marker4.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -284,7 +306,7 @@ function addMarker4() {
     .openOn(map);
   });
     
-  marker4.url = 'https://iarakistain.github.io/Tactizity.github.io/364/index.html'
+  marker4.url = 'https://tourmkr.com/F1ZMJ03W2y/9841842p,2838137m,140.20h,88.63t'
   //LINK TO URL WITH 360 or VIDEO
   marker4.on('click', function(){
     window.location = (this.url);
@@ -301,7 +323,7 @@ function addMarker5() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker5 = L.marker([12.0866391, -68.8997912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach', {closeOnClick: true, autoClose: true});
+  marker5 = L.marker([12.0866391, -68.8997912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach');
   marker5.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -314,7 +336,7 @@ function addMarker5() {
     .openOn(map);
   });
     
-  marker5.url = 'https://iarakistain.github.io/Tactizity.github.io/364/index.html'
+  marker5.url = 'https://tourmkr.com/F1ZMJ03W2y/9841843p,2838137m,69.28h,86.95t'
   //LINK TO URL WITH 360 or VIDEO
   marker5.on('click', function(){
     window.location = (this.url);
@@ -339,6 +361,12 @@ function addMarker5() {
       marker5._removeIcon();
       marker5._removeShadow();
 
+      marker1.closePopup();
+      marker2.closePopup();
+      marker3.closePopup();
+      marker4.closePopup();
+      marker5.closePopup();
+
       document.getElementById('cbox3').checked = false;
       document.getElementById('cbox4').checked = false;
       document.getElementById('cbox5').checked = false;
@@ -350,12 +378,17 @@ function addMarker5() {
         marker2._removeShadow();
         marker5._removeIcon();
         marker5._removeShadow();
+        marker1.closePopup();
+        marker2.closePopup();
+        marker5.closePopup();
       }
       if (document.getElementById('cbox4').checked) {
         marker3._removeIcon();
         marker3._removeShadow();
         marker4._removeIcon();
         marker4._removeShadow();
+        marker3.closePopup();
+        marker4.closePopup();
       }
       addMarker1();
       addMarker2();
@@ -386,6 +419,10 @@ function addMarker5() {
       marker5._removeIcon();
       marker5._removeShadow();
 
+      marker1.closePopup();
+      marker2.closePopup();
+      marker5.closePopup();
+
       document.getElementById('myCheck').checked = false;
     }
  }
@@ -400,6 +437,9 @@ function addMarker5() {
       marker3._removeShadow();
       marker4._removeIcon();
       marker4._removeShadow();
+
+      marker3.closePopup();
+      marker4.closePopup();
 
       document.getElementById('myCheck').checked = false;
     }
