@@ -371,7 +371,7 @@ var materialOptions = {
 //var materialLayerControl = new L.Control.MaterialLayers(layers, null, {position: 'bottomright',   materialOptions: materialOptions}).addTo(map);
 
 // Search location (geocode) control
-var materialGeocodeControl =  new L.Control.MaterialGeocoderControl('mapbox.places', {position: 'topright', autoComplete: true}).addTo(map);
+//var materialGeocodeControl =  new L.Control.MaterialGeocoderControl('mapbox.places', {position: 'topright', autoComplete: true}).addTo(map);
 
 
 function myFunction() {
