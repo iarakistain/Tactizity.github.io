@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">   
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet'>
-<!-- <link href='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.css' rel='stylesheet' /> -->
+<link href='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.css' rel='stylesheet' />
 
  <style>
 hr { 
@@ -98,11 +98,15 @@ div.fix2{
 }
 
 .collapsible:after {
-  content: '\02C5';
+   content: '\02C5';
+  width: 25px;
+  font-size:16px;
+  transform: scale(1.5, 1);
+  display: inline-block;
   color: black;
   font-weight: normal;
   float: right;
-  margin-left: 5px;
+  margin-left: 2px;
 }
 
 .active:after {
@@ -143,12 +147,12 @@ div.fix2{
     top: 78px;
   }
 }
-</style>  
+</style> 
 <script>
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-  window.location = "mobile/index.html";
+//if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  //window.location = "../index.html";
 }
-</script>
+</script> 
 </head>
 <body>
   
@@ -162,7 +166,8 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 //  "https://api.tiles.mapbox.com/mapbox.js/v1.2.1/mapbox.js"
 // }
 </script>
-<script src="https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js"></script>
+<!-- <script src="https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js"></script> -->
+<script src="https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/1.3.0/mapbox-gl.js"></script> -->
 <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
 <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/Leaflet.fullscreen.min.js'></script>
@@ -179,7 +184,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   L.mapbox.accessToken = 'pk.eyJ1IjoiY3RpcHBldHQiLCJhIjoiS3lpTnN4MCJ9.YG_uH8r7IgwgcSWEPYROMA';
   //.........................MAP CENTER POSITION 
   var map = L.mapbox.map('map', null ,{zoomControl: false, attributionControl: true})
-      .setView([12.1135221, -68.9495816], 12); //LONGITUDE, LATITUDE, ZOOM
+      .setView([12.0866391, -68.8997912], 13); //LONGITUDE, LATITUDE, ZOOM
   var layers = {
     Streets: L.mapbox.tileLayer('mapbox.streets'),
     Outdoors: L.mapbox.tileLayer('mapbox.outdoors'),
@@ -214,8 +219,8 @@ function addMarker1() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker1 = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map).bindPopup('Willemstad');
-  marker1.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/361/index.html';
+  marker1 = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map).bindPopup('Willemstad', {autoClose: false});
+  marker1.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/mobile/361/index.html';
   marker1.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -242,7 +247,7 @@ function addMarker2() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker2 = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map).bindPopup('Fort Beekenburg');
+  marker2 = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map).bindPopup('Fort Beekenburg', {autoClose: false});
   marker2.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -254,7 +259,7 @@ function addMarker2() {
     .setContent('Fort Beekenburg')
     .openOn(map);
   });
-  marker2.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/362/index.html'
+  marker2.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/mobile/361/index.html'
     //LINK TO URL WITH 360 or VIDEO
     marker2.on('click', function(){
     window.location = (this.url);
@@ -270,7 +275,7 @@ function addMarker3() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker3 = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach');
+  marker3 = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach', {autoClose: false});
   marker3.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -282,7 +287,7 @@ function addMarker3() {
     .setContent('Mambo Beach')
     .openOn(map);
   });
-  marker3.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/362/index.html'
+  marker3.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/mobile/362/index.html'
   //LINK TO URL WITH 360 or VIDEO
   marker3.on('click', function(){
   window.location = (this.url);
@@ -298,7 +303,7 @@ function addMarker4() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker4 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach');
+  marker4 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach', {autoClose: false});
   marker4.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -311,7 +316,7 @@ function addMarker4() {
     .openOn(map);
   });
     
-  marker4.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/363/index.html'
+  marker4.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/mobile/364/index.html'
   //LINK TO URL WITH 360 or VIDEO
   marker4.on('click', function(){
     window.location = (this.url);
@@ -328,7 +333,7 @@ function addMarker5() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker5 = L.marker([12.0866391, -68.8997912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach');
+  marker5 = L.marker([12.0866391, -68.8997912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach', {autoClose: false});
   marker5.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -341,7 +346,7 @@ function addMarker5() {
     .openOn(map);
   });
     
-  marker5.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/364/index.html'
+  marker5.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/mobile/362/index.html'
   //LINK TO URL WITH 360 or VIDEO
   marker5.on('click', function(){
     window.location = (this.url);
@@ -465,7 +470,7 @@ function addMarker5() {
     
     <input type="checkbox" id="myCheck"  onclick="myFunction1(this);" value="first_checkbox" checked="true"> <label>Show All<hr/></label>
     
-	<input type="checkbox" id="cbox3" onclick="myFunction3(this);" value="second_checkbox" checked="true"> <label class="italic" for="cbox2">Beaches </label>&emsp;
+	<input type="checkbox" id="cbox3" onclick="myFunction3(this);" value="second_checkbox" checked="true"> <label class="italic" for="cbox2">Beaches </label>&#160&emsp;
  <img src="https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png" style="width:18px;height:25px;"> 
     <br>
  
