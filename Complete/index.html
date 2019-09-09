@@ -197,55 +197,56 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 var marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
 marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20,
 marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
-marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40;
+marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40, marker41, marker42;
 
 marker1 = marker2 = marker3 = marker4 = marker5 = marker6 = marker7 = marker8 = marker9 = marker10 = 
 marker11 = marker12 = marker13 = marker14 = marker15 = marker16 = marker17 = marker18 = marker19 = marker20 = 
 marker21 = marker22 = marker23 = marker24 = marker25 = marker26 = marker27 = marker28 = marker29 = marker30 = 
-marker31 = marker32 = marker33 = marker34 = marker35 = marker36 = marker37 = marker38 = marker39 =  marker40 = {};
+marker31 = marker32 = marker33 = marker34 = marker35 = marker36 = marker37 = marker38 = marker39 =  marker40 =  marker41 = marker42 = {};
 var markers_name_collection = {
-  0: 'Willemstad', 
-  1: 'Fort Beekenburg', 
-  2: 'Mambo Beach', 
-  3: 'Blue Bay Beach', 
-  4: 'Mambo Beach',
-  5: 'Barbara Beach',
-  6: 'Cas Abao Beach',
-  7: 'Caracasbaai',
-  8: 'Coral Estate',
-  9: 'Daaibooi',
-  10: 'Directeursbaai',
-  11: 'Playa Forti',
-  12: 'Jan Thiel Beach',
-  13: 'Playa Jeremi',
-  14: 'Klein Knip',
-  15: 'Kokomo Beach',
-  16: 'Grote Knip',
-  17: 'Sint Michiel',
-  18: 'Piscadera Bay',
-  19: 'Playa Lagun',
-  20: 'Playa Piskado',
-  21: 'Playa Portomari',
-  22: 'Santa Cruz',
-  23: 'Seaquarium Beach',
-  24: 'Playa Shon Mosa',
-  25: 'Playa Kalki',
-  26: 'brakkeput mei mei',
-  27: 'playa kanoa',
-  28: 'christoffelberg',
-  29: 'fuikbaai',
-  30: 'klein curacao',
-  31: 'santa barbara plantation',
-  32: 'tugboat beach',
-  33: 'boka ascension',
-  34: 'handelskade',
-  35: 'pietermaai disctrict',
-  36: 'punda',
-  37: 'santa martha baai',
-  38: 'spaanse water',
-  39: 'vissershaven',
-  40: 'fort nassau',
-  41: 'sheta boka'
+  1: 'Willemstad', 
+  2: 'Fort Beekenburg', 
+  3: 'Mambo Beach', 
+  4: 'Blue Bay Beach', 
+  5: 'Mambo Beach',
+  6: 'Barbara Beach',
+  7: 'Cas Abao Beach',
+  8: 'Caracasbaai',
+  9: 'Coral Estate',
+  10: 'Daaibooi',
+  11: 'Directeursbaai',
+  12: 'Playa Forti',
+  13: 'Jan Thiel Beach',
+  14: 'Playa Jeremi',
+  15: 'Klein Knip',
+  16: 'Kokomo Beach',
+  17: 'Grote Knip',
+  18: 'Sint Michiel',
+  19: 'Piscadera Bay',
+  20: 'Playa Lagun',
+  21: 'Playa Piskado',
+  22: 'Playa Portomari',
+  23: 'Santa Cruz',
+  24: 'Seaquarium Beach',
+  25: 'Playa Shon Mosa',
+  26: 'Playa Kalki',
+  27: 'boka ascension',
+  28: 'handelskade',
+  29: 'pietermaai disctrict',
+  30: 'punda',
+  31: 'santa martha baai',
+  32: 'spaanse water',
+  33: 'vissershaven',
+  34: 'fort nassau',
+  35: 'sheta boka',
+  36: 'brakkeput mei mei',
+  37: 'playa kanoa',
+  38: 'christoffelberg',
+  39: 'fuikbaai',
+  40: 'klein curacao',
+  41: 'santa barbara plantation',
+  42: 'Tugboat Beach'
+
  };
 var mc = [];
 // marker1.name = 
@@ -278,7 +279,8 @@ function addMarker1() {
     mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 function addMarker2() {
   var redIcon = new L.Icon({
@@ -309,7 +311,8 @@ function addMarker2() {
  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 function addMarker3() {
   var yellowIcon = new L.Icon({
@@ -337,10 +340,11 @@ function addMarker3() {
   marker3.on('click', function(){
   window.location = (this.url);
   });
-   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+ mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 function addMarker4() {
   var yellowIcon = new L.Icon({
@@ -369,10 +373,11 @@ function addMarker4() {
   marker4.on('click', function(){
     window.location = (this.url);
   }); 
-  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+ mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 function addMarker5() {
@@ -405,7 +410,8 @@ function addMarker5() {
   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 6
@@ -439,7 +445,8 @@ function addMarker6() {
   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -473,10 +480,11 @@ function addMarker7() {
   marker7.on('click', function(){
     window.location = (this.url);
   }); 
-  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+ mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -512,7 +520,8 @@ function addMarker8() {
  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -548,7 +557,8 @@ function addMarker9() {
     mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 10
@@ -580,10 +590,11 @@ function addMarker10() {
   marker10.on('click', function(){
     window.location = (this.url);
   }); 
-     mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 11
@@ -617,7 +628,8 @@ function addMarker11() {
    mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -651,10 +663,11 @@ function addMarker12() {
   marker12.on('click', function(){
     window.location = (this.url);
   }); 
-      mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+    mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 13
@@ -686,10 +699,11 @@ function addMarker13() {
   marker13.on('click', function(){
     window.location = (this.url);
   }); 
-   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 14
@@ -724,7 +738,8 @@ function addMarker14() {
    mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 15
@@ -759,7 +774,8 @@ function addMarker15() {
  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 16
@@ -794,7 +810,8 @@ function addMarker16() {
  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -830,7 +847,8 @@ function addMarker17() {
  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 18
@@ -865,7 +883,8 @@ function addMarker18() {
  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -901,7 +920,8 @@ function addMarker19() {
  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 20
@@ -933,10 +953,11 @@ function addMarker20() {
   marker20.on('click', function(){
     window.location = (this.url);
   }); 
-  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+ mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 21
@@ -968,10 +989,11 @@ function addMarker21() {
   marker21.on('click', function(){
     window.location = (this.url);
   }); 
-  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+ mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 22
@@ -1006,7 +1028,8 @@ function addMarker22() {
  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -1040,10 +1063,11 @@ function addMarker23() {
   marker23.on('click', function(){
     window.location = (this.url);
   }); 
- mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 24
@@ -1075,10 +1099,11 @@ function addMarker24() {
   marker24.on('click', function(){
     window.location = (this.url);
   }); 
-   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+ mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 25
@@ -1113,7 +1138,8 @@ function addMarker25() {
   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 26
@@ -1148,7 +1174,8 @@ function addMarker26() {
  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -1164,7 +1191,7 @@ function addMarker27() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker27 = L.marker([12.271801, -69.054788], {icon: yellowIcon}).addTo(map).bindPopup('BOKA ASCENSION');
+  marker27 = L.marker([12.271801, -69.054788], {icon: yellowIcon}).addTo(map).bindPopup('Boka Ascension');
   marker27.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -1173,7 +1200,7 @@ function addMarker27() {
     offset: [0, -30]
   })
     .setLatLng([12.271801, -69.054788]) 
-    .setContent('BOKA ASCENSION')
+    .setContent('Boka Ascension')
     .openOn(map);
   });
     
@@ -1182,13 +1209,12 @@ function addMarker27() {
   marker27.on('click', function(){
     window.location = (this.url);
   }); 
-   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
-
-
 
 
 //MARKER 28
@@ -1202,7 +1228,7 @@ function addMarker28() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker28 = L.marker([12.107109, -68.934462], {icon: yellowIcon}).addTo(map).bindPopup('HANDELSKADE');
+  marker28 = L.marker([12.107109, -68.934462], {icon: yellowIcon}).addTo(map).bindPopup('Handelskade');
   marker28.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -1211,7 +1237,7 @@ function addMarker28() {
     offset: [0, -30]
   })
     .setLatLng([12.107109, -68.934462]) 
-    .setContent('HANDELSKADE')
+    .setContent('Handelskade')
     .openOn(map);
   });
     
@@ -1220,10 +1246,11 @@ function addMarker28() {
   marker28.on('click', function(){
     window.location = (this.url);
   }); 
-   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -1259,7 +1286,8 @@ function addMarker29() {
    mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -1295,7 +1323,8 @@ function addMarker30() {
    mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -1328,10 +1357,11 @@ function addMarker31() {
   marker31.on('click', function(){
     window.location = (this.url);
   }); 
-   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -1364,10 +1394,11 @@ function addMarker32() {
   marker32.on('click', function(){
     window.location = (this.url);
   }); 
-   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -1400,10 +1431,11 @@ function addMarker33() {
   marker33.on('click', function(){
     window.location = (this.url);
   }); 
-   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -1439,7 +1471,8 @@ function addMarker34() {
    mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 35
@@ -1471,10 +1504,11 @@ function addMarker35() {
   marker35.on('click', function(){
     window.location = (this.url);
   }); 
-   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 
@@ -1509,14 +1543,14 @@ function addMarker36() {
   marker36.on('click', function(){
     window.location = (this.url);
   }); 
-   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
-
-//MARKER 37
+//MARKER 37 MODIFICAR
 
 function addMarker37() {
   var yellowIcon = new L.Icon({
@@ -1527,7 +1561,7 @@ function addMarker37() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker37 = L.marker([12.338560, -69.122824], {icon: yellowIcon}).addTo(map).bindPopup('Christoffelberg');
+  marker37 = L.marker([12.338560, -69.122824], {icon: yellowIcon}).addTo(map).bindPopup('Playa Kanoa');
   marker37.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -1536,7 +1570,7 @@ function addMarker37() {
     offset: [0, -30]
   })
     .setLatLng([12.338560, -69.122824]) 
-    .setContent('Christoffelberg')
+    .setContent('Playa Kanoa')
     .openOn(map);
   });
     
@@ -1548,7 +1582,8 @@ function addMarker37() {
    mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
 
 //MARKER 38
@@ -1562,7 +1597,7 @@ function addMarker38() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker38 = L.marker([12.056533, -68.837269], {icon: yellowIcon}).addTo(map).bindPopup('Fuikbaai');
+  marker38 = L.marker([12.338560, -69.122824], {icon: yellowIcon}).addTo(map).bindPopup('Christoffelberg');
   marker38.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -1570,8 +1605,8 @@ function addMarker38() {
     autoClose: true,
     offset: [0, -30]
   })
-    .setLatLng([12.056533, -68.837269]) 
-    .setContent('Fuikbaai')
+    .setLatLng([12.338560, -69.122824]) 
+    .setContent('Christoffelberg')
     .openOn(map);
   });
     
@@ -1580,13 +1615,12 @@ function addMarker38() {
   marker38.on('click', function(){
     window.location = (this.url);
   }); 
-   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
-
-
 
 //MARKER 39
 
@@ -1599,7 +1633,7 @@ function addMarker39() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker39 = L.marker([11.992350, -68.642385], {icon: yellowIcon}).addTo(map).bindPopup('Klein Curacao');
+  marker39 = L.marker([12.056533, -68.837269], {icon: yellowIcon}).addTo(map).bindPopup('Fuikbaai');
   marker39.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -1607,12 +1641,12 @@ function addMarker39() {
     autoClose: true,
     offset: [0, -30]
   })
-    .setLatLng([11.992350, -68.642385]) 
-    .setContent('Klein Curacao')
+    .setLatLng([12.056533, -68.837269]) 
+    .setContent('Fuikbaai')
     .openOn(map);
   });
     
-  marker39.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/3639/index.html'
+  marker39.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/3640/index.html'
   //LINK TO URL WITH 360 or VIDEO
   marker39.on('click', function(){
     window.location = (this.url);
@@ -1620,8 +1654,11 @@ function addMarker39() {
    mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
+
+
 
 //MARKER 40
 
@@ -1634,8 +1671,44 @@ function addMarker40() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker40 = L.marker([12.076151, -68.838730], {icon: yellowIcon}).addTo(map).bindPopup('Santa Barbara Plantation');
+  marker40 = L.marker([11.992350, -68.642385], {icon: yellowIcon}).addTo(map).bindPopup('Klein Curacao');
   marker40.on('mouseover', function(e) {
+    //open popup;
+    var popup = L.popup({
+    closeButton: false,
+    autoClose: true,
+    offset: [0, -30]
+  })
+    .setLatLng([11.992350, -68.642385]) 
+    .setContent('Klein Curacao')
+    .openOn(map);
+  });
+    
+  marker40.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/3639/index.html'
+  //LINK TO URL WITH 360 or VIDEO
+  marker40.on('click', function(){
+    window.location = (this.url);
+  }); 
+  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+ marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
+ marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
+}
+
+//MARKER 41
+
+function addMarker41() {
+  var yellowIcon = new L.Icon({
+    iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/activities.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [30, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+  marker41 = L.marker([12.076151, -68.838730], {icon: yellowIcon}).addTo(map).bindPopup('Santa Barbara Plantation');
+  marker41.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
     closeButton: false,
@@ -1647,18 +1720,54 @@ function addMarker40() {
     .openOn(map);
   });
     
-  marker40.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/3640/index.html'
+  marker41.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/3640/index.html'
   //LINK TO URL WITH 360 or VIDEO
-  marker40.on('click', function(){
+  marker41.on('click', function(){
+    window.location = (this.url);
+  }); 
+  mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+ marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
+ marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
+ 
+ }
+
+//MARKER 42
+
+function addMarker41() {
+  var yellowIcon = new L.Icon({
+    iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/activities.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [30, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+  marker41 = L.marker([12.076151, -68.838730], {icon: yellowIcon}).addTo(map).bindPopup('TUGBOAT BEACH');
+  marker41.on('mouseover', function(e) {
+    //open popup;
+    var popup = L.popup({
+    closeButton: false,
+    autoClose: true,
+    offset: [0, -30]
+  })
+    .setLatLng([12.076151, -68.838730]) 
+    .setContent('TUGBOAT BEACH')
+    .openOn(map);
+  });
+    
+  marker41.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/3641/index.html'
+  //LINK TO URL WITH 360 or VIDEO
+  marker41.on('click', function(){
     window.location = (this.url);
   }); 
    mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
- marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40];
+ marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
+ marker41, marker42];
 }
-
-//MARKER 41
 
 
 
@@ -1744,7 +1853,8 @@ function addMarker40() {
 	  marker38._removeShadow();
 	  marker39._removeShadow();
 	  marker40._removeShadow();
-	  
+	  marker41._removeShadow();
+	  marker42._removeShadow();
 
       marker1.closePopup();
       marker2.closePopup();
@@ -1786,6 +1896,8 @@ function addMarker40() {
 	  marker38.closePopup();
 	  marker39.closePopup();
 	  marker40.closePopup();
+	  marker41.closePopup();
+	  marker42.closePopup();
  
       document.getElementById('cbox3').checked = false;
       document.getElementById('cbox4').checked = false;
@@ -1864,33 +1976,7 @@ function addMarker40() {
 		marker26._removeIcon();
         marker26._removeShadow();
 		marker26.closePopup();
-		/*marker27._removeIcon();
-        marker27._removeShadow();
-		marker27.closePopup();
-		marker28._removeIcon();
-        marker28._removeShadow();
-		marker28.closePopup();
-		marker29._removeIcon();
-        marker29._removeShadow();
-		marker29.closePopup();
-		marker30._removeIcon();
-        marker30._removeShadow();
-		marker30.closePopup();
-		marker31._removeIcon();
-        marker31._removeShadow();
-		marker31.closePopup();
-		marker32._removeIcon();
-        marker32._removeShadow();
-		marker32.closePopup();
-		marker33._removeIcon();
-        marker33._removeShadow();
-		marker33.closePopup();
-		marker34._removeIcon();
-        marker34._removeShadow();
-		marker34.closePopup();
-		marker35._removeIcon();
-        marker35._removeShadow();
-		marker35.closePopup();*/
+		
       }
       if (document.getElementById('cbox4').checked) {
         marker3._removeIcon();
@@ -1967,7 +2053,8 @@ function addMarker40() {
 	  addMarker38();
 	  addMarker39();
 	  addMarker40();
-	  
+	  addMarker41();
+	  addMarker42();
 	  
       document.getElementById('cbox3').checked = true;
       document.getElementById('cbox4').checked = true;
@@ -2054,6 +2141,8 @@ function addMarker40() {
       marker24._removeShadow();
 	  marker25._removeIcon();
       marker25._removeShadow();
+	  marker26._removeIcon();
+      marker26._removeShadow();
 		
       marker1.closePopup();
       marker2.closePopup();
@@ -2078,7 +2167,8 @@ function addMarker40() {
 	  marker23.closePopup();
 	  marker24.closePopup();
 	  marker25.closePopup();
- 
+      marker26.closePopup();
+	  
       document.getElementById('myCheck').checked = false;
     }
  }
@@ -2095,6 +2185,9 @@ function addMarker40() {
 	  addMarker31();
 	  addMarker32();
 	  addMarker33();
+	  addMarker34();
+	  addMarker35();
+	  
     } else if (!marker_visible) {
       marker3._removeIcon();
       marker3._removeShadow();
@@ -2116,8 +2209,7 @@ function addMarker40() {
       marker33._removeShadow();
 	  marker34._removeIcon();
       marker34._removeShadow();
-	  marker35._removeIcon();
-      marker35._removeShadow();
+	 
 	  
       marker3.closePopup();
       marker4.closePopup();
@@ -2129,7 +2221,7 @@ function addMarker40() {
 	  marker32.closePopup();
 	  marker33.closePopup();
 	  marker34.closePopup();
-	  marker35.closePopup();
+	  
 	  
       document.getElementById('myCheck').checked = false;
     }
@@ -2143,6 +2235,10 @@ function addMarker40() {
 	  addMarker38();
 	  addMarker39();
 	  addMarker40();
+	  addMarker41();
+	  addMarker42();
+	  
+	  
     } else if (!marker_visible) {
       
 	  marker36._removeIcon();
@@ -2155,12 +2251,17 @@ function addMarker40() {
       marker39._removeShadow();
 	  marker40._removeIcon();
       marker40._removeShadow();
+	  marker41._removeIcon();
+      marker41._removeShadow();
+	  marker42._removeShadow();
       
 	  marker36.closePopup();
 	  marker37.closePopup();
 	  marker38.closePopup();
 	  marker39.closePopup();
 	  marker40.closePopup();
+	  marker41.closePopup();
+	  marker42.closePopup();
 	  
       document.getElementById('myCheck').checked = false;
     }
@@ -2205,7 +2306,8 @@ function addMarker40() {
 	  addMarker38();
 	  addMarker39();
 	  addMarker40();
-	  
+	  addMarker41();
+	  addMarker42();
   
    //...............END OF MARKERS
  </script>   
