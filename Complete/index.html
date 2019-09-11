@@ -155,9 +155,9 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 <div id='map'></div>
 <script>
  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-  var el = document.createElement('script');
-  el.src = "https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.js";
-  document.body;
+  //var el = document.createElement('script');
+  //el.src = "https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.js";
+  //document.body;
  } else {
   "https://api.tiles.mapbox.com/mapbox.js/v1.2.1/mapbox.js"
  }
@@ -1735,7 +1735,7 @@ function addMarker41() {
 
 //MARKER 42
 
-function addMarker41() {
+function addMarker42() {
   var yellowIcon = new L.Icon({
     iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/activities.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -1744,8 +1744,8 @@ function addMarker41() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker41 = L.marker([12.076151, -68.838730], {icon: yellowIcon}).addTo(map).bindPopup('TUGBOAT BEACH');
-  marker41.on('mouseover', function(e) {
+  marker42 = L.marker([12.076151, -68.838730], {icon: yellowIcon}).addTo(map).bindPopup('TUGBOAT BEACH');
+  marker42.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
     closeButton: false,
@@ -1757,9 +1757,9 @@ function addMarker41() {
     .openOn(map);
   });
     
-  marker41.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/3641/index.html'
+  marker42.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/3641/index.html'
   //LINK TO URL WITH 360 or VIDEO
-  marker41.on('click', function(){
+  marker42.on('click', function(){
     window.location = (this.url);
   }); 
    mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
@@ -1844,16 +1844,23 @@ function addMarker41() {
       marker32._removeShadow();
 	  marker33._removeIcon();
       marker33._removeShadow();
-	  marker34._removeIcon();
-      marker34._removeShadow();
+    marker34._removeIcon();
+    marker34._removeShadow();
 	  marker35._removeIcon();
-      marker35._removeShadow();
+    marker35._removeShadow();
+    marker36._removeIcon();
 	  marker36._removeShadow();
+    marker37._removeIcon();
 	  marker37._removeShadow();
+    marker38._removeIcon();
 	  marker38._removeShadow();
+    marker39._removeIcon();
 	  marker39._removeShadow();
+    marker40._removeIcon();
 	  marker40._removeShadow();
+    marker41._removeIcon();
 	  marker41._removeShadow();
+    marker42._removeIcon();
 	  marker42._removeShadow();
 
       marker1.closePopup();
@@ -1891,7 +1898,7 @@ function addMarker41() {
 	  marker33.closePopup();
 	  marker34.closePopup();
 	  marker35.closePopup();
-      marker36.closePopup();
+    marker36.closePopup();
 	  marker37.closePopup();
 	  marker38.closePopup();
 	  marker39.closePopup();
@@ -1976,6 +1983,7 @@ function addMarker41() {
 		marker26._removeIcon();
         marker26._removeShadow();
 		marker26.closePopup();
+    
 		
       }
       if (document.getElementById('cbox4').checked) {
@@ -2012,6 +2020,20 @@ function addMarker41() {
 		marker35._removeIcon();
         marker35._removeShadow();
         marker35.closePopup();
+      }
+      if (document.getElementById('cbox5').checked) {
+        marker36._removeIcon();
+        marker36._removeShadow();
+        marker37._removeIcon();
+        marker37._removeShadow();
+        marker38._removeIcon();
+        marker38._removeShadow();
+        marker39._removeIcon();
+        marker39._removeShadow();
+        marker41._removeIcon();
+        marker41._removeShadow();
+        marker42._removeIcon();
+        marker42._removeShadow();
       }
       addMarker1();
       addMarker2();
@@ -2226,45 +2248,51 @@ function addMarker41() {
       document.getElementById('myCheck').checked = false;
     }
    }
-   function myFunction4(el) {
-   
-   var marker_visible = el.checked;
-    if (marker_visible) {
-      addMarker36();
-	  addMarker37();
-	  addMarker38();
-	  addMarker39();
-	  addMarker40();
-	  addMarker41();
-	  addMarker42();
-	  
-	  
-    } else if (!marker_visible) {
-      
-	  marker36._removeIcon();
-      marker36._removeShadow();
-	  marker37._removeIcon();
-      marker37._removeShadow();
-	  marker38._removeIcon();
-      marker38._removeShadow();
-	  marker39._removeIcon();
-      marker39._removeShadow();
-	  marker40._removeIcon();
-      marker40._removeShadow();
-	  marker41._removeIcon();
-      marker41._removeShadow();
-	  marker42._removeShadow();
-      
-	  marker36.closePopup();
-	  marker37.closePopup();
-	  marker38.closePopup();
-	  marker39.closePopup();
-	  marker40.closePopup();
-	  marker41.closePopup();
-	  marker42.closePopup();
-	  
-      document.getElementById('myCheck').checked = false;
-    }
+    function myFunction4(el) {
+      var marker_visible = el.checked;
+      if (marker_visible) {
+        // if check all is checked then remove these markers
+        if (document.getElementById('myCheck').checked) {
+          marker36.removeIcon();
+          marker36.removeShadow();
+          marker39.removeIcon();
+          marker39.removeShadow();
+          marker42.removeIcon();
+          marker42.removeShadow();
+        }
+        addMarker36();
+        addMarker37();
+        addMarker38();
+        addMarker39();
+        addMarker40();
+        addMarker41();
+        addMarker42();
+      } else if (!marker_visible) {
+        marker36._removeIcon();
+        marker36._removeShadow();
+        marker37._removeIcon();
+        marker37._removeShadow();
+        marker38._removeIcon();
+        marker38._removeShadow();
+        marker39._removeIcon();
+        marker39._removeShadow();
+        marker40._removeIcon();
+        marker40._removeShadow();
+        marker41._removeIcon();
+        marker41._removeShadow();
+        marker42._removeIcon();
+        marker42._removeShadow();
+
+        marker36.closePopup();
+        marker37.closePopup();
+        marker38.closePopup();
+        marker39.closePopup();
+        marker40.closePopup();
+        marker41.closePopup();
+        marker42.closePopup();
+
+        document.getElementById('myCheck').checked = false;
+      }
     }
 	  addMarker1();
       addMarker2();
@@ -2325,7 +2353,7 @@ function addMarker41() {
     <input type="checkbox" id="cbox4" onclick="myFunction2(this);" value="first_checkbox" checked="true"> <label class="italic" for="cbox2">Hotspots </label>&emsp;
        <img src="https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png" style="width:18px;height:25px;"> <br>
     
-  <input type="checkbox" id="cbox5" onclick="myFunction4()"  value="second_checkbox" checked="true"> <label class="italic" for="cbox2">Activities </label>&emsp;
+  <input type="checkbox" id="cbox5" onclick="myFunction4(this)"  value="second_checkbox" checked="true"> <label class="italic" for="cbox2">Activities </label>&emsp;
  <img src="https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/activities.png" style="width:18px;height:25px;"> 
     <br> 
     
