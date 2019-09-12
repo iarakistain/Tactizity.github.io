@@ -211,8 +211,8 @@ marker31 = marker32 = marker33 = marker34 = marker35 = marker36 = marker37 = mar
 var markers_name_collection = {
   1: 'Willemstad', 
   2: 'Fort Beekenburg', 
-  3: 'Mambo Beach', 
-  4: 'Blue Bay Beach', 
+  3: 'Blue Bay Beach', 
+  4: '*********', 
   5: 'Mambo Beach',
   6: 'Barbara Beach',
   7: 'Cas Abao Beach',
@@ -257,14 +257,14 @@ var mc = [];
 // marker1.name = 
 function addMarker1() {
   var greenIcon = new L.Icon({
-    iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png',
+    iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [30, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker1 = L.marker([12.1097, -68.9326], {icon: greenIcon}).addTo(map).bindPopup('Willemstad', {autoClose: false});
+  marker1 = L.marker([12.104336, -68.936729], {icon: greenIcon}).addTo(map).bindPopup('Willemstad', {autoClose: false});
   marker1.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/mobile/361/index.html';
   marker1.on('mouseover', function(e) {
     //open popup;
@@ -273,7 +273,7 @@ function addMarker1() {
     autoClose: true,
     offset: [0, -30] 
   })
-    .setLatLng([12.1097, -68.9326])  
+    .setLatLng([12.104336, -68.936729])  
     .setContent('Willemstad')
     .openOn(map);
   });
@@ -287,16 +287,19 @@ function addMarker1() {
 //  marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
 //  marker41, marker42];
 }
+
+
+//MARKER 2
 function addMarker2() {
-  var redIcon = new L.Icon({
-    iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png',
+  var yellowIcon = new L.Icon({
+    iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/activities.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [30, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker2 = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map).bindPopup('Fort Beekenburg', {autoClose: false});
+  marker2= L.marker([12.072391989268953,-68.86200428009033], {icon: yellowIcon}).addTo(map).bindPopup('Fort Beekenburg');
   marker2.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -308,17 +311,20 @@ function addMarker2() {
     .setContent('Fort Beekenburg')
     .openOn(map);
   });
-  marker2.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/mobile/363/index.html'
-    //LINK TO URL WITH 360 or VIDEO
-    marker2.on('click', function(){
+    
+  marker2.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/mobile/3602/index.html'
+  //LINK TO URL WITH 360 or VIDEO
+  marker2.on('click', function(){
     window.location = (this.url);
-  });
- mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+  }); 
+   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
  marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
  marker41, marker42];
 }
+
+
 function addMarker3() {
   var yellowIcon = new L.Icon({
     iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png',
@@ -328,7 +334,7 @@ function addMarker3() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker3 = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach', {autoClose: false});
+  marker3 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach', {autoClose: false});
   marker3.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -336,8 +342,8 @@ function addMarker3() {
     autoClose: true,
     offset: [0, -30]  
   })
-    .setLatLng([12.0866391, -68.8937912]) 
-    .setContent('Mambo Beach')
+    .setLatLng([12.134494803902554, -68.98499965667725]) 
+    .setContent('Blue Bay Beach')
     .openOn(map);
   });
   marker3.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/mobile/362/index.html'
@@ -351,6 +357,8 @@ function addMarker3() {
  marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
  marker41, marker42];
 }
+
+
 function addMarker4() {
   var yellowIcon = new L.Icon({
     iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png',
@@ -360,7 +368,7 @@ function addMarker4() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker4 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach', {autoClose: false});
+  marker4 = L.marker([1.134494803902554, -6.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach', {autoClose: false});
   marker4.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -368,7 +376,7 @@ function addMarker4() {
     autoClose: true,
     offset: [0, -30]
   })
-    .setLatLng([12.134494803902554, -68.98499965667725]) 
+    .setLatLng([1.134494803902554, -6.98499965667725]) 
     .setContent('Blue Bay Beach')
     .openOn(map);
   });
@@ -384,6 +392,7 @@ function addMarker4() {
  marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
  marker41, marker42];
 }
+
 
 function addMarker5() {
   var yellowIcon = new L.Icon({
@@ -758,7 +767,7 @@ function addMarker15() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker15 = L.marker([12.341406, -69.152490], {icon: yellowIcon}).addTo(map).bindPopup('Klein Knip', {autoClose: false});
+  marker15 = L.marker([12.341406, -69.152490], {icon: yellowIcon}).addTo(map).bindPopup('Kleine Knip', {autoClose: false});
   marker15.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -767,7 +776,7 @@ function addMarker15() {
     offset: [0, -30]
   })
     .setLatLng([12.341406, -69.152490]) 
-    .setContent('Klein Knip')
+    .setContent('Kleine Knip')
     .openOn(map);
   });
     
@@ -1381,7 +1390,7 @@ function addMarker32() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker32 = L.marker([12.080265, -68.859778], {icon: yellowIcon}).addTo(map).bindPopup('Spaanse water', {autoClose: false});
+  marker32 = L.marker([12.078505, -68.861395], {icon: yellowIcon}).addTo(map).bindPopup('Spaanse water', {autoClose: false});
   marker32.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -1389,7 +1398,7 @@ function addMarker32() {
     autoClose: true,
     offset: [0, -30]
   })
-    .setLatLng([12.080265, -68.859778]) 
+    .setLatLng([12.078505, -68.861395]) 
     .setContent('Spaanse water')
     .openOn(map);
   });
@@ -1712,7 +1721,7 @@ function addMarker41() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker41 = L.marker([12.076151, -68.838730], {icon: yellowIcon}).addTo(map).bindPopup('Santa Barbara Plantation', {autoClose: false});
+  marker41 = L.marker([12.076151, -68.838730], {icon: yellowIcon}).addTo(map).bindPopup('Tugboat', {autoClose: false});
   marker41.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -1721,7 +1730,7 @@ function addMarker41() {
     offset: [0, -30]
   })
     .setLatLng([12.076151, -68.838730]) 
-    .setContent('Santa Barbara Plantation')
+    .setContent('Tugboat')
     .openOn(map);
   });
     
@@ -1749,7 +1758,7 @@ function addMarker42() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker42 = L.marker([12.076151, -68.838730], {icon: yellowIcon}).addTo(map).bindPopup('Tugboat beach', {autoClose: false});
+  marker42 = L.marker([12.069289, -68.861653], {icon: yellowIcon}).addTo(map).bindPopup('Tugboat beach', {autoClose: false});
   marker42.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -1757,7 +1766,7 @@ function addMarker42() {
     autoClose: true,
     offset: [0, -30]
   })
-    .setLatLng([12.076151, -68.838730]) 
+    .setLatLng([12.069289, -68.861653]) 
     .setContent('Tugboat beach')
     .openOn(map);
   });
@@ -1918,12 +1927,12 @@ function addMarker42() {
       if (document.getElementById('cbox3').checked) {
         marker1._removeIcon();
         marker1._removeShadow();
-        marker2._removeIcon();
-        marker2._removeShadow();
+       // marker2._removeIcon();
+       // marker2._removeShadow();
         marker5._removeIcon();
         marker5._removeShadow();
         marker1.closePopup();
-        marker2.closePopup();
+       // marker2.closePopup();
         marker5.closePopup();
 		marker6._removeIcon();
         marker6._removeShadow();
@@ -2026,7 +2035,10 @@ function addMarker42() {
         marker35.closePopup();
       }
       if (document.getElementById('cbox5').checked) {
-        marker36._removeIcon();
+        
+		marker2._removeIcon();
+        marker2._removeShadow();
+		marker36._removeIcon();
         marker36._removeShadow();
         marker37._removeIcon();
         marker37._removeShadow();
@@ -2095,7 +2107,7 @@ function addMarker42() {
     var marker_visible = el.checked;
     if (marker_visible) {
       addMarker1();
-      addMarker2();
+      //addMarker2();
       addMarker5();
 	  addMarker6();
 	  addMarker7();
@@ -2123,8 +2135,8 @@ function addMarker42() {
     } else if (!marker_visible) {
       marker1._removeIcon();
       marker1._removeShadow();
-      marker2._removeIcon();
-      marker2._removeShadow();
+     // marker2._removeIcon();
+     // marker2._removeShadow();
       marker5._removeIcon();
       marker5._removeShadow();
 	  marker6._removeIcon();
@@ -2171,7 +2183,7 @@ function addMarker42() {
       marker26._removeShadow();
 		
       marker1.closePopup();
-      marker2.closePopup();
+     // marker2.closePopup();
       marker5.closePopup();
 	  marker6.closePopup();
 	  marker7.closePopup();
@@ -2235,6 +2247,8 @@ function addMarker42() {
       marker33._removeShadow();
       marker34._removeIcon();
       marker34._removeShadow();
+	  marker35._removeIcon();
+      marker35._removeShadow();
 	 
 	  
       marker3.closePopup();
@@ -2254,6 +2268,7 @@ function addMarker42() {
     function myFunction4(el) {
       var marker_visible = el.checked;
       if (marker_visible) {
+	    addMarker2();
         addMarker36();
         addMarker37();
         addMarker38();
@@ -2262,7 +2277,9 @@ function addMarker42() {
         addMarker41();
         addMarker42();
       } else if (!marker_visible) {
-        marker36._removeIcon();
+        marker2._removeIcon();
+        marker2._removeShadow();
+		marker36._removeIcon();
         marker36._removeShadow();
         marker37._removeIcon();
         marker37._removeShadow();
@@ -2277,7 +2294,8 @@ function addMarker42() {
         marker42._removeIcon();
         marker42._removeShadow();
 
-        marker36.closePopup();
+        marker2.closePopup();
+		marker36.closePopup();
         marker37.closePopup();
         marker38.closePopup();
         marker39.closePopup();
