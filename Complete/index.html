@@ -206,8 +206,8 @@ marker31 = marker32 = marker33 = marker34 = marker35 = marker36 = marker37 = mar
 var markers_name_collection = {
   1: 'Willemstad', 
   2: 'Fort Beekenburg', 
-  3: 'Mambo Beach', 
-  4: 'Blue Bay Beach', 
+  3: 'Blue Bay Beach', 
+  4: '*************', 
   5: 'Mambo Beach',
   6: 'Barbara Beach',
   7: 'Cas Abao Beach',
@@ -245,14 +245,15 @@ var markers_name_collection = {
   39: 'fuikbaai',
   40: 'klein curacao',
   41: 'santa barbara plantation',
-  42: 'Tugboat Beach'
+  42: 'Tugboat Beach',
+  43: 'Fort Beekenburg',
 
  };
 var mc = [];
 // marker1.name = 
 function addMarker1() {
   var greenIcon = new L.Icon({
-    iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png',
+    iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [30, 41],
     iconAnchor: [12, 41],
@@ -282,16 +283,19 @@ function addMarker1() {
  marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
  marker41, marker42];
 }
+
+
+//MARKER 2
 function addMarker2() {
-  var redIcon = new L.Icon({
-    iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/BEACHES.png',
+  var yellowIcon = new L.Icon({
+    iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/activities.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [30, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker2 = L.marker([12.072391989268953, -68.86200428009033], {icon: redIcon}).addTo(map).bindPopup('Fort Beekenburg');
+  marker2= L.marker([12.072391989268953,-68.86200428009033], {icon: yellowIcon}).addTo(map).bindPopup('Fort Beekenburg');
   marker2.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -303,17 +307,19 @@ function addMarker2() {
     .setContent('Fort Beekenburg')
     .openOn(map);
   });
-  marker2.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/363/index.html'
-    //LINK TO URL WITH 360 or VIDEO
-    marker2.on('click', function(){
+    
+  marker2.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/3602/index.html'
+  //LINK TO URL WITH 360 or VIDEO
+  marker2.on('click', function(){
     window.location = (this.url);
-  });
- mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
+  }); 
+   mc = [marker1, marker2, marker3, marker4, marker5, marker6, marker7, marker8, marker9, marker10, 
  marker11, marker12, marker13, marker14, marker15, marker16, marker17, marker18, marker19, marker20, 
  marker21, marker22, marker23, marker24, marker25, marker26, marker27, marker28, marker29, marker30,
  marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
  marker41, marker42];
 }
+
 function addMarker3() {
   var yellowIcon = new L.Icon({
     iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png',
@@ -323,7 +329,7 @@ function addMarker3() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker3 = L.marker([12.0866391, -68.8937912], {icon: yellowIcon}).addTo(map).bindPopup('Mambo Beach');
+  marker3 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach');
   marker3.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -331,8 +337,8 @@ function addMarker3() {
     autoClose: true,
     offset: [0, -30]  
   })
-    .setLatLng([12.0866391, -68.8937912]) 
-    .setContent('Mambo Beach')
+    .setLatLng([12.134494803902554, -68.98499965667725]) 
+    .setContent('Blue Bay Beach')
     .openOn(map);
   });
   marker3.url = 'https://iarakistain.github.io/Tactizity.github.io/Complete/362/index.html'
@@ -346,6 +352,7 @@ function addMarker3() {
  marker31, marker32, marker33, marker34, marker35, marker36, marker37, marker38, marker39, marker40,
  marker41, marker42];
 }
+
 function addMarker4() {
   var yellowIcon = new L.Icon({
     iconUrl: 'https://iarakistain.github.io/Tactizity.github.io/Curacao/3D/hotspots.png',
@@ -355,7 +362,7 @@ function addMarker4() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker4 = L.marker([12.134494803902554, -68.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach');
+  marker4 = L.marker([1.134494803902554, -6.98499965667725], {icon: yellowIcon}).addTo(map).bindPopup('Blue Bay Beach');
   marker4.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -363,7 +370,7 @@ function addMarker4() {
     autoClose: true,
     offset: [0, -30]
   })
-    .setLatLng([12.134494803902554, -68.98499965667725]) 
+    .setLatLng([1.134494803902554, -6.98499965667725]) 
     .setContent('Blue Bay Beach')
     .openOn(map);
   });
@@ -1550,7 +1557,7 @@ function addMarker36() {
  marker41, marker42];
 }
 
-//MARKER 37 MODIFICAR
+//MARKER 37 
 
 function addMarker37() {
   var yellowIcon = new L.Icon({
@@ -1771,6 +1778,18 @@ function addMarker42() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 // ../ MARKERS AREA //
  //.........................MARKER1 
   function myFunction1(el)
@@ -1911,14 +1930,14 @@ function addMarker42() {
       document.getElementById('cbox5').checked = false;
     } else if (marker_visible) {
       if (document.getElementById('cbox3').checked) {
-        marker1._removeIcon();
-        marker1._removeShadow();
-        marker2._removeIcon();
-        marker2._removeShadow();
+        //marker1._removeIcon();
+        //marker1._removeShadow();
+       // marker2._removeIcon();
+       // marker2._removeShadow();
         marker5._removeIcon();
         marker5._removeShadow();
-        marker1.closePopup();
-        marker2.closePopup();
+        //marker1.closePopup();
+       // marker2.closePopup();
         marker5.closePopup();
 		marker6._removeIcon();
         marker6._removeShadow();
@@ -1987,7 +2006,9 @@ function addMarker42() {
 		
       }
       if (document.getElementById('cbox4').checked) {
-        marker3._removeIcon();
+        marker1._removeIcon();
+        marker1._removeShadow();
+		marker3._removeIcon();
         marker3._removeShadow();
 		marker3.closePopup();
         marker4._removeIcon();
@@ -2022,7 +2043,9 @@ function addMarker42() {
         marker35.closePopup();
       }
       if (document.getElementById('cbox5').checked) {
-        marker36._removeIcon();
+        marker2._removeIcon();
+        marker2._removeShadow();
+		marker36._removeIcon();
         marker36._removeShadow();
         marker37._removeIcon();
         marker37._removeShadow();
@@ -2090,8 +2113,8 @@ function addMarker42() {
   {
     var marker_visible = el.checked;
     if (marker_visible) {
-      addMarker1();
-      addMarker2();
+      //addMarker1();
+     // addMarker2();
       addMarker5();
 	  addMarker6();
 	  addMarker7();
@@ -2117,10 +2140,10 @@ function addMarker42() {
 	  
 	  
     } else if (!marker_visible) {
-      marker1._removeIcon();
-      marker1._removeShadow();
-      marker2._removeIcon();
-      marker2._removeShadow();
+      //marker1._removeIcon();
+      //marker1._removeShadow();
+     // marker2._removeIcon();
+     // marker2._removeShadow();
       marker5._removeIcon();
       marker5._removeShadow();
 	  marker6._removeIcon();
@@ -2166,8 +2189,8 @@ function addMarker42() {
 	  marker26._removeIcon();
       marker26._removeShadow();
 		
-      marker1.closePopup();
-      marker2.closePopup();
+      //marker1.closePopup();
+     // marker2.closePopup();
       marker5.closePopup();
 	  marker6.closePopup();
 	  marker7.closePopup();
@@ -2198,6 +2221,7 @@ function addMarker42() {
   function myFunction2(el){
     var marker_visible = el.checked;
     if (marker_visible) {
+	  addMarker1();
       addMarker3();
       addMarker4();
 	  addMarker27();
@@ -2211,6 +2235,8 @@ function addMarker42() {
 	  addMarker35();
 	  
     } else if (!marker_visible) {
+	  marker1._removeIcon();
+      marker1._removeShadow();
       marker3._removeIcon();
       marker3._removeShadow();
       marker4._removeIcon();
@@ -2231,8 +2257,10 @@ function addMarker42() {
       marker33._removeShadow();
 	  marker34._removeIcon();
       marker34._removeShadow();
-	 
+	 marker35._removeIcon();
+      marker35._removeShadow();
 	  
+	  marker1.closePopup();
       marker3.closePopup();
       marker4.closePopup();
 	  marker27.closePopup();
@@ -2253,13 +2281,16 @@ function addMarker42() {
       if (marker_visible) {
         // if check all is checked then remove these markers
         if (document.getElementById('myCheck').checked) {
-          marker36.removeIcon();
+          marker2.removeIcon();
+          marker2.removeShadow();
+		  marker36.removeIcon();
           marker36.removeShadow();
           marker39.removeIcon();
           marker39.removeShadow();
           marker42.removeIcon();
           marker42.removeShadow();
         }
+		addMarker2();
         addMarker36();
         addMarker37();
         addMarker38();
@@ -2268,7 +2299,9 @@ function addMarker42() {
         addMarker41();
         addMarker42();
       } else if (!marker_visible) {
-        marker36._removeIcon();
+        marker2._removeIcon();
+        marker2._removeShadow();
+		marker36._removeIcon();
         marker36._removeShadow();
         marker37._removeIcon();
         marker37._removeShadow();
@@ -2283,6 +2316,7 @@ function addMarker42() {
         marker42._removeIcon();
         marker42._removeShadow();
 
+		marker2.closePopup();
         marker36.closePopup();
         marker37.closePopup();
         marker38.closePopup();
