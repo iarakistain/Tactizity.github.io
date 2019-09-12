@@ -1575,7 +1575,7 @@ function addMarker37() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
-  marker37 = L.marker([12.338560, -69.122824], {icon: yellowIcon}).addTo(map).bindPopup('Playa Kanoa', {autoClose: false});
+  marker37 = L.marker([12.174928, -68.866128], {icon: yellowIcon}).addTo(map).bindPopup('Playa Kanoa', {autoClose: false});
   marker37.on('mouseover', function(e) {
     //open popup;
     var popup = L.popup({
@@ -1583,7 +1583,7 @@ function addMarker37() {
     autoClose: true,
     offset: [0, -30]
   })
-    .setLatLng([12.338560, -69.122824]) 
+    .setLatLng([12.174928, -68.866128]) 
     .setContent('Playa Kanoa')
     .openOn(map);
   });
@@ -2106,7 +2106,7 @@ function addMarker42() {
   {
     var marker_visible = el.checked;
     if (marker_visible) {
-      addMarker1();
+      //addMarker1();
       //addMarker2();
       addMarker5();
 	  addMarker6();
@@ -2133,8 +2133,8 @@ function addMarker42() {
 	  
 	  
     } else if (!marker_visible) {
-      marker1._removeIcon();
-      marker1._removeShadow();
+      //marker1._removeIcon();
+      //marker1._removeShadow();
      // marker2._removeIcon();
      // marker2._removeShadow();
       marker5._removeIcon();
@@ -2182,7 +2182,7 @@ function addMarker42() {
 	  marker26._removeIcon();
       marker26._removeShadow();
 		
-      marker1.closePopup();
+      //marker1.closePopup();
      // marker2.closePopup();
       marker5.closePopup();
 	  marker6.closePopup();
@@ -2214,7 +2214,8 @@ function addMarker42() {
   function myFunction2(el){
     var marker_visible = el.checked;
     if (marker_visible) {
-      addMarker3();
+      addMarker1();
+	  addMarker3();
       addMarker4();
       addMarker27();
       addMarker28();
@@ -2227,7 +2228,10 @@ function addMarker42() {
       addMarker35();
 	  
     } else if (!marker_visible) {
-      marker3._removeIcon();
+      
+	  marker1._removeIcon();
+      marker1._removeShadow();
+	  marker3._removeIcon();
       marker3._removeShadow();
       marker4._removeIcon();
       marker4._removeShadow();
@@ -2250,7 +2254,7 @@ function addMarker42() {
 	  marker35._removeIcon();
       marker35._removeShadow();
 	 
-	  
+	  marker1.closePopup();
       marker3.closePopup();
       marker4.closePopup();
       marker27.closePopup();
