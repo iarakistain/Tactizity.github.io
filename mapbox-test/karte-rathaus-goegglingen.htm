@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basics  
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	
+	<meta charset="utf-8">
+	
+	<title>Rathaus G&ouml;gglingen - Mr. Amsterdam</title>
+	
+	<!-- Meta Tags
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  	<meta name="robots" content="noindex, nofollow">
+	
+	<meta name="description" content="">
+	
+	<meta name="keywords" content="">
+			
+	<meta name="language" content="de">
+	
+		
+	<!-- Mobile Specific Metas
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	
+	<meta name="apple-mobile-web-app-capable" content="yes"/> <!-- Versteckt UI-Elemente (Adressleiste) in Safari, I OS -->
+	
+	<!-- Mapbox
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>
+	
+	<!-- Font Awesome
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	
+	<script src="https://kit.fontawesome.com/3c23e7246b.js"></script>
+
+	<!-- CSS
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	
+	<link rel="stylesheet" href="map.css">
+	
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' />
+	
+	<!-- Google fonts
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,900" rel='stylesheet' type='text/css'>
+	
+	
+	<!-- Analytics
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	
+	<script>
+		
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-69452036-1', 'auto');
+	  ga('set', 'anonymizeIp', true);
+	  ga('send', 'pageview');
+
+	</script>
+	
+	<!-- HTML 5 / CSS 3 fix für Ältere Internet-Explorer als 9
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+	<!-- <link rel="manifest" href="/manifest.json"> -->
+	<!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff0000"> -->
+	<meta name="theme-color" content="#ffffff">	
+
+	<!-- Modernizr and Fastclick
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+		
+	<!-- <script src="js/main-header.min.js"></script> -->
+
+	<style>
+	
+	body { margin:0; padding:0; }
+	#map { position:absolute; top:50px; bottom:0; width:100%; }
+	
+	.filter-group {
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        font-weight: 600;
+        position: absolute;
+        bottom: 50px;
+        right: 10px;
+        z-index: 1;
+        border-radius: 3px;
+        width: 120px;
+        color: #fff;
+    }
+
+    .filter-group input[type=checkbox]:first-child + label {
+        border-radius: 3px 3px 0 0;
+    }
+
+    .filter-group label:last-child {
+        border-radius: 0 0 3px 3px;
+        border: none;
+    }
+
+    .filter-group input[type=checkbox] {
+        display: none;
+    }
+
+    .filter-group input[type=checkbox] + label {
+        background-color: #3386c0;
+        display: block;
+        cursor: pointer;
+        padding: 10px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    }
+
+    .filter-group input[type=checkbox] + label {
+        background-color: #3386c0;
+        text-transform: capitalize;
+    }
+
+    .filter-group input[type=checkbox] + label:hover,
+    .filter-group input[type=checkbox]:checked + label {
+        background-color: #4ea0da;
+    }
+
+    .filter-group input[type=checkbox]:checked + label:before {
+        content: '✔';
+        margin-right: 5px;
+    }
+	
+	</style>
+	
+</head>
+
+<body id="home">		
+														
+		<nav class="map-navigation">
+					
+			<div class="map-logo"></div>
+			
+			<div class="map-close"><p>&times;<p></div>
+									  
+		</nav>
+		
+		<div class="band content">
+					
+					<div id='map'></div>
+					<nav id='filter-group' class='filter-group'></nav>
+					<!-- <script src="https://docs.mapbox.com/mapbox-gl-js/example/filter-markers/"></script> -->
+					<!-- Mapbox Geolocation -->
+					<script>
+						mapboxgl.accessToken = 'pk.eyJ1IjoibWFjY2MiLCJhIjoiWndTMW91USJ9.3AHoLuimpxdYeg7RjwPTrQ';
+
+						var map = new mapboxgl.Map({
+							container: 'map',
+							style: 'mapbox://styles/mapbox/streets-v11',
+							center: [9.938991, 48.335499],
+							zoom: 15
+						});
+
+						var nav = new mapboxgl.NavigationControl();
+						map.addControl(nav, 'top-left');
+						
+						map.addControl(
+							new mapboxgl.GeolocateControl({
+								positionOptions: {
+									enableHighAccuracy: true
+								},
+								trackUserLocation: true
+							})
+						);
+							
+						// End Mapbox Geolocation 
+					
+						var geojson = {
+						"type": "FeatureCollection",
+						"features": [
+						
+						{
+						  "type": "Feature",
+						  "geometry": {
+							"coordinates": [9.937223, 48.334364],
+							"type": "Point"
+						  },
+						  "properties": {
+							"title": "Rathaus",
+							"description": "Steak-House, <br>Korte Leidsedwarsstraat 26, <br>1017 RC Amsterdam",
+							"sonstiges": false,
+							"highlights": false,
+							"unterkuenfte": false,
+							"shopping": false,
+							"essen-trinken": true,
+							"kultur": false,
+							"marker-color": "#108809",
+							"marker-size": "medium",
+							"icon": "green"
+						  }
+						},
+						
+						{
+						  "type": "Feature",
+						  "geometry": {
+							"coordinates": [9.932418, 48.329364],
+							"type": "Point"
+						  },
+						  "properties": {
+							"title": "Albertos la Forge",
+							"description": "Steak-House, <br>Korte Leidsedwarsstraat 26, <br>1017 RC Amsterdam",
+							"sonstiges": false,
+							"highlights": false,
+							"unterkuenfte": false,
+							"shopping": false,
+							"essen-trinken": true,
+							"kultur": false,
+							"marker-color": "#108809",
+							"marker-size": "medium",
+							"icon": "blue"
+						  }
+						},
+						
+						{
+						  "type": "Feature",
+						  "geometry": {
+							"coordinates": [9.936295, 48.334066],
+							"type": "Point"
+						  },
+						  "properties": {
+							"title": "Fart",
+							"description": "Steak-House, <br>Korte Leidsedwarsstraat 26, <br>1017 RC Amsterdam",
+							"sonstiges": false,
+							"highlights": false,
+							"unterkuenfte": false,
+							"shopping": false,
+							"essen-trinken": true,
+							"kultur": false,
+							"marker-color": "#108809",
+							"marker-size": "medium",
+							"icon": "red"
+						  }
+						},
+						
+						]
+					};
+					
+					// Mapbox Load Marker Images
+					
+					map.on('load', function() {
+				    // Add a GeoJSON source containing place coordinates and information.
+				    
+				    map.loadImage('red.png', function(error, image) {
+							if (error) throw error;
+							map.addImage('red', image)
+						});
+				    
+				    map.loadImage('blue.png', function(error, image) {
+							if (error) throw error;
+							map.addImage('blue', image)
+						});
+					
+						map.loadImage('green.png', function(error, image) {
+							if (error) throw error;
+							map.addImage('green', image)
+						});
+				    
+				    map.addSource("geojson", {
+							"type": "geojson",
+							"data": geojson
+				    });
+				    
+				    // End Mapbox Load Marker Images 
+
+						map.on('mouseenter', 'Fart', alert);
+				    
+				    // Mapbox add Filter Group and Icons 
+				    
+				    var filterGroup = document.getElementById('filter-group');
+				    
+				    geojson.features.forEach(function(feature) {
+				        var symbol = feature.properties['icon'];
+				        var layerID = 'poi-' + symbol;
+				
+				        // Add a layer for this symbol type if it hasn't been added already.
+				        if (!map.getLayer(layerID)) {
+				            map.addLayer({
+				                "id": layerID,
+				                "type": "symbol",
+				                "source": "geojson",
+				                "layout": {
+				                    "icon-image": symbol,
+				                    "icon-allow-overlap": true
+				                },
+				                "filter": ["==", "icon", symbol]
+				            });
+				            
+				            map.showCollisionBoxes = true
+				
+				            // Add checkbox and label elements for the layer.
+				            var input = document.createElement('input');
+				            input.type = 'checkbox';
+				            input.id = layerID;
+				            input.checked = true;
+				            filterGroup.appendChild(input);
+				
+				            var label = document.createElement('label');
+				            label.setAttribute('for', layerID);
+				            label.textContent = symbol;
+				            filterGroup.appendChild(label);
+				
+				            // When the checkbox changes, update the visibility of the layer.
+				            input.addEventListener('change', function(e) {
+				                map.setLayoutProperty(layerID, 'visibility',
+				                    e.target.checked ? 'visible' : 'none');
+				            });
+					        }
+					        
+					    });
+					    
+					    // End Mapbox add Filter Group and Icons 
+					   
+					});
+					
+					//add markers to map
+					geojson.features.forEach(function(marker) {
+
+						// create a HTML element for each feature
+						var el = document.createElement('div');
+						el.className = 'marker';
+						var popup = new mapboxgl.Popup({offset: 25}) // add popups
+								.setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>');
+						
+						// make a marker for each feature and add it to the map
+						var new_marker = new mapboxgl.Marker(el)
+							.setLngLat(marker.geometry.coordinates)
+							.setPopup(
+								popup
+							)
+							.addTo(map);
+					});
+
+					</script>
+					
+					<div class="callout">
+						<div class="callout-header">Position anzeigen</div>
+							<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+							<div class="callout-container">
+							<p>Drücke den Button <img src="position-button.png" height="20px">, um deine aktuelle Position anzuzeigen. <a href="#">Mehr Infos dazu...</a></p>
+						</div>
+					</div>
+						
+		</div> <!-- end band content -->
+	
+<!-- End Document
++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+</body>
+</html>
