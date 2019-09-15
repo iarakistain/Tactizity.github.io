@@ -363,7 +363,7 @@
 											.addTo(map);
 										});
 
-										map.on('onclick', layerID, function() {
+										map.on('onmousemove', layerID, function() {
 											map.getCanvas().style.cursor = '';
 											popup.remove();
 										});
