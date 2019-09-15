@@ -34,7 +34,8 @@
 	<!-- Mapbox
 	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 	
-	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>
+	<!-- <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/1.3.1/mapbox-gl.js"></script>
 	
 	<!-- Font Awesome
 	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -46,7 +47,8 @@
 	
 	<link rel="stylesheet" href="map.css">
 	
-	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' />
+	<!-- <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' /> -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/1.3.1/mapbox-gl.css" rel="stylesheet">
 	
 	<!-- Google fonts
 	+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -361,7 +363,7 @@
 											.addTo(map);
 										});
 
-										map.on('mouseleave', layerID, function() {
+										map.on('onmousedown', layerID, function() {
 											map.getCanvas().style.cursor = '';
 											popup.remove();
 										});
@@ -382,6 +384,9 @@
 				            input.addEventListener('change', function(e) {
 				                map.setLayoutProperty(layerID, 'visibility',
 				                    e.target.checked ? 'visible' : 'none');
+														e.preventDefault();
+														e.stopPropagation();
+														popup.remove();
 				            });
 					        }
 					        
@@ -394,17 +399,17 @@
 					//add markers to map
 					geojson.features.forEach(function(marker) {
 
-						var el = document.createElement('div');
-						el.className = 'marker';
-						var popup = new mapboxgl.Popup({offset: 25}) // add popups
-								.setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>');
+						// var el = document.createElement('div');
+						// el.className = 'marker';
+						// var popup = new mapboxgl.Popup({offset: 25}) // add popups
+						//		.setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>');
 						
-						var new_marker = new mapboxgl.Marker(el)
-							.setLngLat(marker.geometry.coordinates)
-							.setPopup(
-								popup
-							)
-							.addTo(map);
+						// var new_marker = new mapboxgl.Marker(el)
+						// 	.setLngLat(marker.geometry.coordinates)
+						// 	.setPopup(
+						// 		popup
+						// 	)
+						// 	.addTo(map);
 							
 					});
 
