@@ -337,8 +337,8 @@
 
 										// Create a popup, but don't add it to the map yet.
 										var popup = new mapboxgl.Popup({
-											closeButton: false,
-											closeOnClick: false
+											closeButton: true,
+											closeOnClick: true
 										});
 
 										map.on('mouseenter', layerID, function(e) {
@@ -363,10 +363,10 @@
 											.addTo(map);
 										});
 
-										map.on('onmouseleave', layerID, function() {
-											map.getCanvas().style.cursor = '';
-											popup.remove();
-										});
+										// map.on('mouseleave', layerID, function() {
+										// 	map.getCanvas().style.cursor = '';
+										// 	popup.remove();
+										// });
 				
 				            // Add checkbox and label elements for the layer.
 				            var input = document.createElement('input');
