@@ -52,7 +52,7 @@ br {
   margin-bottom: 16px;
   display: block;
 }
-@media (min-width: 340px) {
+@media (min-width: 840px) {
   .leaflet-bar-mdl.leaflet-control {
     margin: 24px 24px 0 24px;
   }
@@ -186,7 +186,7 @@ div.fix2{
   var map = L.mapbox.map('map', null ,{zoomControl: false, attributionControl: true})
 		.setView([12.104336, -68.936729], 13); //LONGITUDE, LATITUDE, ZOOM
 		
-	map.setView([12.104336, -68.936729], 13);	
+	var map = L.map.setView([12.104336, -68.936729], 13);	
   var layers = {
     Streets: L.mapbox.tileLayer('mapbox.streets'),
     Outdoors: L.mapbox.tileLayer('mapbox.outdoors'),
