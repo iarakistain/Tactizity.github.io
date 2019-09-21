@@ -2488,8 +2488,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
   search_input_el.addEventListener("keyup", function() {
     var input_value = (this.value).trim();
     for (var key in markers_name_collection) {
-     // if ((markers_name_collection[key].indexOf(input_value) != -1) && input_value.length > 2) {
-     //   mc[key].openPopup();
+      if ((markers_name_collection[key].indexOf(input_value) != -1) && input_value.length > 2) {
+        mc[key].openPopup();
+	 
+	  var map = L.mapbox.map('map', null ,{zoomControl: false, attributionControl: true})
+		.setView([12.104336, -68.936729], 13); //LONGITUDE, LATITUDE, ZOOM
+	 
       }
     }
   });
