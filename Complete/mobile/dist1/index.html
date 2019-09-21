@@ -1846,7 +1846,7 @@ function addMarker44() {
     autoClose: true,
     offset: [0, -30]
   })
-    .setLatLng([12.069289, -6.861653]) 
+    .setLatLng([12.069289, -68.861653]) 
     .setContent('Tugboat')
     .openOn(map);
   });
@@ -2544,6 +2544,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 });
 </script>
+
+<script>
+  L.Control.Attribution.prototype.options.position = "bottomleft";
+  L.mapbox.accessToken = 'pk.eyJ1IjoiY3RpcHBldHQiLCJhIjoiS3lpTnN4MCJ9.YG_uH8r7IgwgcSWEPYROMA';
+  //.........................MAP CENTER POSITION 
+  var map = L.mapbox.map('map', null ,{zoomControl: false, attributionControl: true})
+		.setView([12.104336, -68.936729], 13); //LONGITUDE, LATITUDE, ZOOM
+		
+</script>	
 </body>
 </html>
 <!-- partial -->
