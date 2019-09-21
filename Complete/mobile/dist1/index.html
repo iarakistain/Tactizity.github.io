@@ -2491,9 +2491,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       if ((markers_name_collection[key].indexOf(input_value) != -1) && input_value.length > 2) {
         mc[key].openPopup();
 	 
-	  var map = L.mapbox.map('map', null ,{zoomControl: false, attributionControl: true})
-		.setView([12.104336, -68.936729], 13); //LONGITUDE, LATITUDE, ZOOM
-	 
       }
     }
   });
@@ -2547,7 +2544,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     marker41.openPopup();
     marker42.openPopup();
     marker43.openPopup();
-
+var map = L.mapbox.map('map', null ,{zoomControl: false, attributionControl: true})
+		.setView([12.104336, -68.936729], 13); //LONGITUDE, LATITUDE, ZOOM
 	
   }
 });
