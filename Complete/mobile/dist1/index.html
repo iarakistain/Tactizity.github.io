@@ -1863,7 +1863,7 @@ function addMarker44() {
  marker41, marker42, marker43, marker44];
 }
 
-/*
+
 
 // ../ MARKERS AREA //
  //.........................MARKER1 
@@ -2396,7 +2396,7 @@ function addMarker44() {
         marker42._removeShadow();
         marker43._removeIcon();
         marker43._removeShadow();
-		 marker44._removeIcon();
+		marker44._removeIcon();
         marker44._removeShadow();
 		
 		
@@ -2462,7 +2462,7 @@ function addMarker44() {
   
    //...............END OF MARKERS
    
-   */
+   
  </script>   
 
  
@@ -2488,8 +2488,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   search_input_el.addEventListener("keyup", function() {
     var input_value = (this.value).trim();
     for (var key in markers_name_collection) {
-      if ((markers_name_collection[key].indexOf(input_value) != -1) && input_value.length > 2) {
-        mc[key].openPopup();
+     // if ((markers_name_collection[key].indexOf(input_value) != -1) && input_value.length > 2) {
+     //   mc[key].openPopup();
       }
     }
   });
