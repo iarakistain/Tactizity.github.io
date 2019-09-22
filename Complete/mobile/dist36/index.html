@@ -184,7 +184,7 @@ if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navig
   L.mapbox.accessToken = 'pk.eyJ1IjoiY3RpcHBldHQiLCJhIjoiS3lpTnN4MCJ9.YG_uH8r7IgwgcSWEPYROMA';
   //.........................MAP CENTER POSITION 
   var map = L.mapbox.map('map', null ,{zoomControl: false, attributionControl: true})
-      .setView([12.1135221, -68.9495816], 12); //LONGITUDE, LATITUDE, ZOOM
+      .setView([12.089897, -68.862861], 15); //LONGITUDE, LATITUDE, ZOOM
   var layers = {
     Streets: L.mapbox.tileLayer('mapbox.streets'),
     Outdoors: L.mapbox.tileLayer('mapbox.outdoors'),
@@ -2537,6 +2537,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     marker41.openPopup();
     marker42.openPopup();
     marker43.openPopup();
+	
+	map.panTo(new L.LatLng(12.089897, -68.862861));
   }
 });
 </script>
